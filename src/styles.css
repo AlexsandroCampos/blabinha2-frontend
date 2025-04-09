@@ -1,1 +1,48 @@
 /* You can add global styles to this file, and also import other style files */
+@import url(styles/fonts.css);
+@import url(styles/theme.css);
+@import "tailwindcss";
+
+@plugin "daisyui";
+
+@theme {
+    --font-text: "dr", sans-serif;
+    --font-title: "infini", sans-serif;
+}
+
+@layer base {
+    p {
+        font-family: var(--font-text);
+        font-size: var(--text-sm);
+        color: var(--color-primary);
+        font-weight: 400;
+    }
+    
+     h1 {
+        font-family: var(--font-title);
+        font-size: var(--text-6xl);
+        font-weight: 700;
+        color: var(--color-primary);
+    }
+    
+    h2 {
+        font-family: var(--font-title);
+        font-size: var(--text-5xl);
+        font-weight: 700;
+        color: var(--color-primary);
+    }
+    
+    h3 {
+        font-family: var(--font-title);
+        font-size: var(--text-4xl);
+        font-weight: 700;
+        color: var(--color-primary);
+    }
+    
+    h4 {
+        font-family: var(--font-title);
+        font-size: var(--text-2xl);
+        font-weight: 700;
+        color: var(--color-primary);
+    }  
+}

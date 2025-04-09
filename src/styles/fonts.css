@@ -1,0 +1,19 @@
+@font-face {
+    font-family: "infini";
+    src: url("/assets/fonts/Infini/02_Webfonts/01_Regular/infini-regular.woff") format("woff");
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "infini";
+    src: url("/assets/fonts/Infini/02_Webfonts/03_Bold/infini-bold.woff") format("woff");
+    font-style: normal;
+    font-weight: 700;
+}
+  
+@font-face {
+    font-family: "dr";
+    src: url("../assets/fonts/dr/Fonts-WOFF2/DrWeb-Regular-Trial.woff2") format("woff2");
+    font-style: normal;
+}
