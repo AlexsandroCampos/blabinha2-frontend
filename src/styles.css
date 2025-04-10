@@ -1,9 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
-@import url(styles/fonts.css);
 @import url(styles/theme.css);
+@import url(styles/fonts.css);
 @import "tailwindcss";
 
-@plugin "daisyui";
+@plugin "daisyui" {
+    themes: false;
+}
 
 @theme {
     --font-text: "dr", sans-serif;
