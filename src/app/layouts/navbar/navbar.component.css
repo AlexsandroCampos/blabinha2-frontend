@@ -1,0 +1,7 @@
+.bg-custom-gradient-header {
+    background: linear-gradient(180deg, #88B0BF 28.5%, #E4EDF2 100%);
+}
+
+.bg-custom-gradient-drawer-responsive{
+    background: linear-gradient(90deg, #011826 0%, #042940 100%);
+}
