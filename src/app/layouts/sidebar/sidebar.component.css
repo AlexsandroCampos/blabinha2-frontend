@@ -1,0 +1,19 @@
+.bg-custom-gradient-drawer{
+    background: linear-gradient(90deg, #011826 0%, #042940 100%);
+}
+
+.bg-custom-gradient-li{
+    background: linear-gradient(90deg, rgba(4, 88, 140, 0.50) 0%, rgba(1, 24, 38, 0.50) 100%);
+}
+
+.custom-tooltip::before {
+    background-color: var(--color-accent)!important;
+    color: var(--color-base-100)!important;
+    border: none;
+  }
+  
+.custom-tooltip::after {
+  background-color: var(--color-accent)!important;
+  color: var(--color-base-100)!important;
+  border: none;
+}

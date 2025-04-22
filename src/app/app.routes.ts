@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { NavbarComponent } from './layouts/navbar/navbar.component';
+import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 
 export const routes: Routes = [
     {
         path: '',
-        component: NavbarComponent,
+        component: MainLayoutComponent,
         title: 'navbar',
     },
 ];
