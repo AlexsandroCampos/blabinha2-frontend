@@ -1,5 +1,9 @@
-<!-- <app-chat></app-chat> -->
-<div class="md:ml-20 p-4 flex flex-col items-center">
+<!-- componente de mensagem -->
+<app-chat *ngIf="true"></app-chat>
+
+<!-- container do home -->
+<div class="md:ml-20 md:mt-10 p-4 flex flex-col items-center overflow-hidden" *ngIf="false">
+  <!-- Título da homepage -->
   <div class="flex flex-col items-center">
     <div class="flex">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:h-8 sm:w-8 md:h-11 md:w-11 fill-primary mr-2" viewBox="0 0 61 55" fill="none">
@@ -7,11 +11,10 @@
       </svg>
       <h1 class="text-xl sm:text-3xl md:text-5xl text-center">Vamos Jogar!</h1>
     </div>
-
-    
     <p class="mt-2 text-xs md:text-sm">Embarque nesta aventura, explore os segredos da Amazônia Azul e ajude a protegê-la!</p>  
   </div>
 
+  <!-- input para envio de mensagens -->
   <div class="w-full max-w-xs sm:max-w-lg md:max-w-2xl mx-auto mt-10">
     <fieldset class="bg-secondary rounded-4xl p-4 flex flex-col gap-2">
       <textarea  [value]="null"
@@ -34,7 +37,7 @@
     </fieldset>
   </div>  
 
-
+  <!-- botões para sugestão de início de conversa -->
   <div class="w-full max-w-xs sm:max-w-sm md:max-w-3xl grid grid-cols-2 md:flex md:justify-between gap-2 mt-6 sm:mt-10 md:mt-15">
     <button class="btn btn-secondary rounded-4xl w-full md:w-40 text-xs md:text-sm">O que é o jogo?</button>
     <button class="btn btn-secondary rounded-4xl w-full md:w-40 text-xs md:text-sm">Quem é você?</button>
