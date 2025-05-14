@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { TipsModalComponent } from "../tips-modal/tips-modal.component";
+import { TipsModalComponent } from "../../shared/tips-modal/tips-modal.component";
 import { CommonModule } from '@angular/common';
 
 @Component({

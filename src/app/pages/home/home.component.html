@@ -1,8 +1,8 @@
 <!-- componente de mensagem -->
-<app-chat *ngIf="true"></app-chat>
+<app-chat *ngIf="false"></app-chat>
 
 <!-- container do home -->
-<div class="md:ml-20 md:mt-10 p-4 flex flex-col items-center overflow-hidden" *ngIf="false">
+<div class="md:ml-20 md:mt-6 p-3 flex flex-col items-center overflow-hidden" *ngIf="true">
   <!-- Título da homepage -->
   <div class="flex flex-col items-center">
     <div class="flex">
@@ -11,7 +11,7 @@
       </svg>
       <h1 class="text-xl sm:text-3xl md:text-5xl text-center">Vamos Jogar!</h1>
     </div>
-    <p class="mt-2 text-xs md:text-sm">Embarque nesta aventura, explore os segredos da Amazônia Azul e ajude a protegê-la!</p>  
+    <p class="mt-2 text-xs md:text-sm text-center">Embarque nesta aventura, explore os segredos da Amazônia Azul e ajude a protegê-la!</p>  
   </div>
 
   <!-- input para envio de mensagens -->
@@ -37,11 +37,14 @@
     </fieldset>
   </div>  
 
+  <h3 class="text-base md:text-xl text-center mt-4 mb-2">Sugestões de início de conversa</h3>
   <!-- botões para sugestão de início de conversa -->
-  <div class="w-full max-w-xs sm:max-w-sm md:max-w-3xl grid grid-cols-2 md:flex md:justify-between gap-2 mt-6 sm:mt-10 md:mt-15">
+  <div class="w-full max-w-xs sm:max-w-sm md:max-w-3xl grid grid-cols-2 md:flex md:justify-between gap-2 mt-3">
     <button class="btn btn-secondary rounded-4xl w-full md:w-40 text-xs md:text-sm">O que é o jogo?</button>
     <button class="btn btn-secondary rounded-4xl w-full md:w-40 text-xs md:text-sm">Quem é você?</button>
     <button class="btn btn-secondary rounded-4xl w-full md:w-40 text-xs md:text-sm">Qual é o objetivo?</button>
     <button class="btn btn-secondary rounded-4xl w-full md:w-40 text-xs md:text-sm">Quem criou o jogo?</button>
   </div>
 </div>
+
+<app-phase-modal></app-phase-modal>

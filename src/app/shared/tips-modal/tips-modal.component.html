@@ -16,9 +16,10 @@
   [class.pointer-events-none]="!modalOpen">
   
   <div class="flex min-h-full justify-center p-3 text-center items-center sm:p-0">
+    <!-- Corpo do modal -->
     <div
-      class="relative transform overflow-hidden rounded-lg bg-base-100 text-left shadow-xl transition-all duration-300 ease-out sm:my-8 sm:w-full 
-      sm:max-w-lg h-100 flex flex-col justify-between items-center"
+      class="relative transform overflow-hidden rounded-xl bg-base-100 text-left shadow-xl transition-all duration-300 ease-out sm:my-8 sm:w-full 
+      sm:max-w-lg h-110 flex flex-col justify-between items-center"
       [class.opacity-100]="modalOpen"
       [class.opacity-0]="!modalOpen"
       [class.translate-y-0]="modalOpen"
@@ -28,7 +29,7 @@
       
       <!-- Conteúdo -->
       <div class="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-        <h3 class="text-lg sm:text-xl">Sugestões de Perguntas</h3>
+        <h2 class="text-lg sm:text-2xl">Sugestões de Perguntas</h2>
       </div>
 
       <div class="flex flex-col w-xs px-8 sm:px-0 sm:w-sm h-[50%] justify-around">
@@ -38,7 +39,7 @@
       </div>
 
       <!-- Botões -->
-      <div class="px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 sm:justify-center sm:p-6 mt-3">
+      <div class="px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 sm:justify-center sm:p-6 sm:pt-4">
         <button type="button" class="btn btn-accent inline-flex justify-center px-3 py-2 text-sm font-semibold shadow-xs w-40 rounded-4xl">Ok</button>
         <button (click)="closeModal()" type="button" class="btn btn-sm btn-circle btn-ghost absolute right-0 top-0 sm:right-2 sm:top-2">✕</button>
       </div>
