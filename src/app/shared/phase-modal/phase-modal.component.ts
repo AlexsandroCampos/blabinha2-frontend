@@ -10,15 +10,21 @@ import { FormsModule } from '@angular/forms';
 })
 export class PhaseModalComponent {
   modalOpen = false;
+  modalAnswered = false
   currentStep = 0;
   selectedAvatar: Number = -1
   selectedModel: string = "none"
   selectedEngineering: string = "none"
   alerts: string[] = []
 
-  openModal() {
-    if (!localStorage.getItem('modalAnswered'))
-      this.modalOpen = true;
+  openModal(info: boolean) {
+    this.modalAnswered = Boolean(localStorage.getItem('modalAnswered'))
+    if(info) {
+      this.currentStep = 2
+      this.modalOpen = true
+    } 
+    else if (!this.modalAnswered)
+      this.modalOpen = true
   }
 
   closeModal() {

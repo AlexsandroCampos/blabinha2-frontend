@@ -223,8 +223,9 @@
       
 
       <!-- Botões -->
-      <div class="px-4 pb-3 flex flex-row justify-center sm:px-6 sm:justify-between sm:p-6 sm:pt-4 mt-3 md:w-md flex-wrap">
-        <button (click)="prev()" type="button" class="btn btn-accent inline-flex justify-center px-3 py-2 text-sm font-semibold shadow-xs w-40 rounded-4xl">Anterior</button>
+      <div class="px-4 pb-3 flex flex-row justify-center sm:px-6 sm:justify-between sm:p-6 sm:pt-4 mt-3 md:w-md flex-wrap"
+         [ngClass]="{'md:justify-center': modalAnswered}">
+        <button *ngIf="!modalAnswered" (click)="prev()" type="button" class="btn btn-accent inline-flex justify-center px-3 py-2 text-sm font-semibold shadow-xs w-40 rounded-4xl">Anterior</button>
         <button (click)="next()" type="button" class="btn btn-accent inline-flex justify-center px-3 py-2 text-sm font-semibold shadow-xs w-40 rounded-4xl mt-3 sm:mt-0">Próximo</button>
         <!-- <button (click)="closeModal()" type="button" class="btn btn-sm btn-circle btn-ghost absolute right-0 top-0 sm:right-2 sm:top-2">✕</button> -->
       </div>
@@ -291,7 +292,8 @@
       <!-- Botões -->
       <div class="px-4 pb-3 flex flex-row justify-center sm:px-6 sm:justify-between sm:p-6 sm:pt-4 mt-3 md:w-md flex-wrap">
         <button (click)="prev()" type="button" class="btn btn-accent inline-flex justify-center px-3 py-2 text-sm font-semibold shadow-xs w-40 rounded-4xl">Anterior</button>
-        <button (click)="submitModal()" type="button" class="btn btn-primary inline-flex justify-center px-3 py-2 text-sm font-semibold shadow-xs w-40 rounded-4xl mt-3 sm:mt-0">Ok</button>
+        <button *ngIf="!modalAnswered" (click)="submitModal()" type="button" class="btn btn-primary inline-flex justify-center px-3 py-2 text-sm font-semibold shadow-xs w-40 rounded-4xl mt-3 sm:mt-0">Ok</button>
+        <button *ngIf="modalAnswered" (click)="closeModal()" type="button" class="btn btn-primary inline-flex justify-center px-3 py-2 text-sm font-semibold shadow-xs w-40 rounded-4xl mt-3 sm:mt-0">Ok</button>
         <!-- <button (click)="closeModal()" type="button" class="btn btn-sm btn-circle btn-ghost absolute right-0 top-0 sm:right-2 sm:top-2">✕</button> -->
       </div>
     </div>

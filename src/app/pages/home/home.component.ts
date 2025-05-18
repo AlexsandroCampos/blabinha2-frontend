@@ -28,12 +28,11 @@ export class HomeComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    setTimeout(() => this.modalComponent.openModal())
+    setTimeout(() => this.modalComponent.openModal(false))
   }
 
-  sendMessage(event: Event): void {
-    const textarea = event.target as HTMLTextAreaElement;
-    console.log(textarea)
+  sendMessage(): void {
+    var textarea = document.getElementById("textarea") as HTMLTextAreaElement
 
     if (!textarea) return
 
@@ -45,6 +44,5 @@ export class HomeComponent implements AfterViewInit {
 
     localStorage.setItem('step', "1");
     this.router.navigate(['/chat'])
-
-    }
+  }
 }
