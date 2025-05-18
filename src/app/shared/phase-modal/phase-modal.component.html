@@ -41,6 +41,7 @@
               name="option"
               class="peer hidden"
               value="1"
+              [(ngModel)]="selectedAvatar"
             />
             <div
               class="p-4 rounded-xl bg-secondary peer-checked:border-primary peer-checked:bg-primary peer-checked:[&>svg]:fill-primary-content transition-all"
@@ -57,6 +58,7 @@
               name="option"
               class="peer hidden"
               value="2"
+              [(ngModel)]="selectedAvatar"
             />
             <div
               class="p-4 rounded-xl bg-secondary peer-checked:border-primary peer-checked:bg-primary peer-checked:[&>svg]:fill-primary-content transition-all"
@@ -74,7 +76,8 @@
               type="radio"
               name="option"
               class="peer hidden"
-              value="1"
+              value="3"
+              [(ngModel)]="selectedAvatar"
             />
             <div
               class="p-4 rounded-xl bg-secondary peer-checked:border-primary peer-checked:bg-primary peer-checked:[&>svg]:fill-primary-content transition-all"
@@ -90,7 +93,8 @@
               type="radio"
               name="option"
               class="peer hidden"
-              value="2"
+              value="4"
+              [(ngModel)]="selectedAvatar"
             />
             <div
               class="p-4 rounded-xl bg-secondary peer-checked:border-primary peer-checked:bg-primary peer-checked:[&>svg]:fill-primary-content transition-all"
@@ -108,7 +112,8 @@
               type="radio"
               name="option"
               class="peer hidden"
-              value="1"
+              value="5"
+              [(ngModel)]="selectedAvatar"
             />
             <div
               class="p-4 rounded-xl bg-secondary peer-checked:border-primary peer-checked:bg-primary peer-checked:[&>svg]:fill-primary-content transition-all"
@@ -124,7 +129,8 @@
               type="radio"
               name="option"
               class="peer hidden"
-              value="2"
+              value="6"
+              [(ngModel)]="selectedAvatar"
             />
             <div
               class="p-4 rounded-xl bg-secondary peer-checked:border-primary peer-checked:bg-primary peer-checked:[&>svg]:fill-primary-content transition-all"
@@ -164,21 +170,21 @@
       <div class="flex flex-col h-[40%] justify-between mb-5">
         <fieldset class="fieldset">
           <legend class="fieldset-legend">Modelo de Linguagem</legend>
-          <select class="select">
-            <option disabled selected>Selecione um modelo de linguagem</option>
-            <option>GPT</option>
-            <option>Gemine</option>
-            <option>Lhama</option>
+          <select class="select" [(ngModel)]="selectedModel">
+            <option disabled selected value="none">Selecione um modelo de linguagem</option>
+            <option value="GPT">GPT</option>
+            <option value="Gemini">Gemini</option>
+            <option value="Llama">Llama</option>
           </select>
         </fieldset>
 
         <fieldset class="fieldset">
           <legend class="fieldset-legend">Engenharia de Prompt</legend>
-          <select class="select">
-            <option disabled selected>Selecione uma engenharia de prompt</option>
-            <option>Enegenharia 1</option>
-            <option>Enegenharia 2</option>
-            <option>Enegenharia 3</option>
+          <select class="select" [(ngModel)]="selectedEngineering">
+            <option disabled selected value="none">Selecione uma engenharia de prompt</option>
+            <option value="Enegenharia 1">Enegenharia 1</option>
+            <option value="Enegenharia 2">Enegenharia 2</option>
+            <option value="Enegenharia 3">Enegenharia 3</option>
           </select>
         </fieldset>
       </div>
@@ -285,10 +291,24 @@
       <!-- Botões -->
       <div class="px-4 pb-3 flex flex-row justify-center sm:px-6 sm:justify-between sm:p-6 sm:pt-4 mt-3 md:w-md flex-wrap">
         <button (click)="prev()" type="button" class="btn btn-accent inline-flex justify-center px-3 py-2 text-sm font-semibold shadow-xs w-40 rounded-4xl">Anterior</button>
-        <button (click)="closeModal()" type="button" class="btn btn-primary inline-flex justify-center px-3 py-2 text-sm font-semibold shadow-xs w-40 rounded-4xl mt-3 sm:mt-0">Ok</button>
+        <button (click)="submitModal()" type="button" class="btn btn-primary inline-flex justify-center px-3 py-2 text-sm font-semibold shadow-xs w-40 rounded-4xl mt-3 sm:mt-0">Ok</button>
         <!-- <button (click)="closeModal()" type="button" class="btn btn-sm btn-circle btn-ghost absolute right-0 top-0 sm:right-2 sm:top-2">✕</button> -->
       </div>
     </div>
 
   </div>
+</div>
+
+
+<!-- Alerta com transição -->
+<div *ngFor="let alert of alerts; let i = index"
+  role="alert"
+  class="alert alert-warning transition-opacity duration-500 ease-in-out opacity-0 animate-fade-in
+    absolute top-2 right-2 z-10 w-xs"
+  [style.top.px]="20 + (i * 60)" >
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+      d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+  </svg>
+  <span>{{ alert }}</span>
 </div>

@@ -1,0 +1,11 @@
+.responsive {
+    @media (width >= 981px) {
+        max-width: var(--container-4xl);
+    }
+}
+
+.responsive2 {
+    @media (width >= 386px) {
+        padding: 0;;
+    }
+}

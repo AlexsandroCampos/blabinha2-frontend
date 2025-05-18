@@ -1,10 +1,7 @@
-<!-- componente de mensagem -->
-<app-chat *ngIf="false"></app-chat>
-
 <!-- container do home -->
-<div class="md:ml-20 md:mt-6 p-3 flex flex-col items-center overflow-hidden" *ngIf="true">
+<div class="flex flex-col items-center overflow-hidden md:mt-6 p-3">
   <!-- Título da homepage -->
-  <div class="flex flex-col items-center">
+  <div class="flex flex-col items-center" >
     <div class="flex">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:h-8 sm:w-8 md:h-11 md:w-11 fill-primary mr-2" viewBox="0 0 61 55" fill="none">
         <path d="M30.25 0C31.7087 0 33.1076 0.579462 34.1391 1.61091C35.1705 2.64236 35.75 4.04131 35.75 5.5C35.75 7.535 34.65 9.3225 33 10.2575V13.75H35.75C40.8554 13.75 45.7517 15.7781 49.3618 19.3882C52.9719 22.9983 55 27.8946 55 33H57.75C58.4793 33 59.1788 33.2897 59.6945 33.8055C60.2103 34.3212 60.5 35.0207 60.5 35.75V44C60.5 44.7293 60.2103 45.4288 59.6945 45.9445C59.1788 46.4603 58.4793 46.75 57.75 46.75H55V49.5C55 50.9587 54.4205 52.3576 53.3891 53.3891C52.3576 54.4205 50.9587 55 49.5 55H11C9.54131 55 8.14236 54.4205 7.11091 53.3891C6.07946 52.3576 5.5 50.9587 5.5 49.5V46.75H2.75C2.02065 46.75 1.32118 46.4603 0.805456 45.9445C0.289731 45.4288 0 44.7293 0 44V35.75C0 35.0207 0.289731 34.3212 0.805456 33.8055C1.32118 33.2897 2.02065 33 2.75 33H5.5C5.5 27.8946 7.52812 22.9983 11.1382 19.3882C14.7483 15.7781 19.6446 13.75 24.75 13.75H27.5V10.2575C25.85 9.3225 24.75 7.535 24.75 5.5C24.75 4.04131 25.3295 2.64236 26.3609 1.61091C27.3924 0.579462 28.7913 0 30.25 0ZM17.875 30.25C16.0516 30.25 14.303 30.9743 13.0136 32.2636C11.7243 33.553 11 35.3016 11 37.125C11 38.9484 11.7243 40.697 13.0136 41.9864C14.303 43.2757 16.0516 44 17.875 44C19.6984 44 21.447 43.2757 22.7364 41.9864C24.0257 40.697 24.75 38.9484 24.75 37.125C24.75 35.3016 24.0257 33.553 22.7364 32.2636C21.447 30.9743 19.6984 30.25 17.875 30.25ZM42.625 30.25C40.8016 30.25 39.053 30.9743 37.7636 32.2636C36.4743 33.553 35.75 35.3016 35.75 37.125C35.75 38.9484 36.4743 40.697 37.7636 41.9864C39.053 43.2757 40.8016 44 42.625 44C44.4484 44 46.197 43.2757 47.4864 41.9864C48.7757 40.697 49.5 38.9484 49.5 37.125C49.5 35.3016 48.7757 33.553 47.4864 32.2636C46.197 30.9743 44.4484 30.25 42.625 30.25Z" fill="#011826"/>
@@ -17,9 +14,10 @@
   <!-- input para envio de mensagens -->
   <div class="w-full max-w-xs sm:max-w-lg md:max-w-2xl mx-auto mt-10">
     <fieldset class="bg-secondary rounded-4xl p-4 flex flex-col gap-2">
-      <textarea  [value]="null"
-        class="text-base-100 w-full bg-secondary resize-none border-0 focus:outline-none p-2 md:h-24 rounded-xl
-        sm:text-sm text-xs" 
+      <textarea [value]="null" #textarea
+        class="text-base-100 w-full bg-secondary resize-none border-0 focus:outline-none p-2 rounded-xl
+        sm:text-sm text-xs placeholder-base-100/65  max-h-20 overflow-y-auto md:h-20"
+        (keydown.enter)="sendMessage($event)"
         placeholder="Digite alguma coisa...">
       </textarea>
   

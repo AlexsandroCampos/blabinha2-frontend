@@ -1,5 +1,12 @@
-<app-navbar></app-navbar>
-<app-sidebar></app-sidebar>
-<main>
-    <router-outlet></router-outlet> 
-</main>
+<div class="grid grid-cols-1 md:grid-cols-[80px_1fr] grid-rows-[64px_1fr] gap-y-3 md:gap-y-8 h-screen">
+  <!-- Navbar ocupa 1 coluna no mobile, 2 colunas no md+ -->
+  <app-navbar class="col-span-1 md:col-span-2 row-start-1 row-end-2"></app-navbar>
+
+  <!-- Sidebar só aparece em md+ -->
+  <app-sidebar class="hidden md:block row-span-2 col-start-1 row-start-1"></app-sidebar>
+
+  <!-- Main ocupa toda a largura no mobile, e só a segunda coluna no md+ -->
+  <main class="col-start-1 md:col-start-2 row-start-2 overflow-y-auto">
+    <router-outlet></router-outlet>
+  </main>
+</div>

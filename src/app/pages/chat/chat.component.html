@@ -1,7 +1,37 @@
-<div class="md:ml-20 p-4 flex justify-center overflow-y-auto max-h-[calc(100vh-160px)]">
-    <div class="w-full max-w-4xl">
+<div class="flex flex-col items-center"> <!-- Toda a altura da tela -->
+  <!-- Área de mensagens com rolagem -->
+  <div class="flex-1 px-4 w-full h-full flex flex-col items-center">
+    <div class="w-full max-w-sm sm:max-w-lg md:max-w-2xl responsive mx-auto">
+      <div class="chat chat-start last:pb-10">
+        <div class="chat-image">
+          <div class="btn btn-secondary btn-circle w-8 h-8 sm:w-11 sm:h-11 md:w-13 md:h-13 pointer-events-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8 fill-primary" viewBox="0 0 40 36" fill="none">
+              <path d="M20 0C20.9644 0 21.8893 0.379285 22.5713 1.05442C23.2532 1.72955 23.6364 2.64522 23.6364 3.6C23.6364 4.932 22.9091 6.102 21.8182 6.714V9H23.6364C27.0118 9 30.2491 10.3275 32.6359 12.6905C35.0227 15.0534 36.3636 18.2583 36.3636 21.6H38.1818C38.664 21.6 39.1265 21.7896 39.4675 22.1272C39.8084 22.4648 40 22.9226 40 23.4V28.8C40 29.2774 39.8084 29.7352 39.4675 30.0728C39.1265 30.4104 38.664 30.6 38.1818 30.6H36.3636V32.4C36.3636 33.3548 35.9805 34.2705 35.2986 34.9456C34.6166 35.6207 33.6917 36 32.7273 36H7.27273C6.3083 36 5.38338 35.6207 4.70143 34.9456C4.01948 34.2705 3.63636 33.3548 3.63636 32.4V30.6H1.81818C1.33597 30.6 0.873508 30.4104 0.532533 30.0728C0.191558 29.7352 0 29.2774 0 28.8V23.4C0 22.9226 0.191558 22.4648 0.532533 22.1272C0.873508 21.7896 1.33597 21.6 1.81818 21.6H3.63636C3.63636 18.2583 4.97727 15.0534 7.3641 12.6905C9.75092 10.3275 12.9882 9 16.3636 9H18.1818V6.714C17.0909 6.102 16.3636 4.932 16.3636 3.6C16.3636 2.64522 16.7468 1.72955 17.4287 1.05442C18.1107 0.379285 19.0356 0 20 0ZM11.8182 19.8C10.6127 19.8 9.4565 20.2741 8.60406 21.118C7.75162 21.9619 7.27273 23.1065 7.27273 24.3C7.27273 25.4935 7.75162 26.6381 8.60406 27.482C9.4565 28.3259 10.6127 28.8 11.8182 28.8C13.0237 28.8 14.1799 28.3259 15.0323 27.482C15.8847 26.6381 16.3636 25.4935 16.3636 24.3C16.3636 23.1065 15.8847 21.9619 15.0323 21.118C14.1799 20.2741 13.0237 19.8 11.8182 19.8ZM28.1818 19.8C26.9763 19.8 25.8201 20.2741 24.9677 21.118C24.1153 21.9619 23.6364 23.1065 23.6364 24.3C23.6364 25.4935 24.1153 26.6381 24.9677 27.482C25.8201 28.3259 26.9763 28.8 28.1818 28.8C29.3873 28.8 30.5435 28.3259 31.3959 27.482C32.2484 26.6381 32.7273 25.4935 32.7273 24.3C32.7273 23.1065 32.2484 21.9619 31.3959 21.118C30.5435 20.2741 29.3873 19.8 28.1818 19.8Z" fill="#011826"/>
+            </svg>
+          </div>
+        </div>
+        <div class="chat-header">
+          Anakin
+        </div>
+        <div class="chat-bubble text-xs md:text-sm lg:text-base py-1.5 px-2 sm:py-2 sm:px-4 max-w-[90%] sm:max-w-[65%] break-words">I hate you!</div>
+      </div>
 
-      <div class="chat chat-start">
+      <div class="chat chat-end last:pb-10">
+            <div class="chat-image">
+              <div class="btn btn-secondary btn-circle w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 pointer-events-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 fill-primary" viewBox="0 0 42 42">
+                    <path d="M5.75 23.875L19.75 3.8025V23.875H5.75ZM22.375 23.875C24.7375 17.3125 24.4225 8.4925 22.375 2C30.705 4.695 37.075 14.95 37.18 23.875H22.375ZM37.425 30.14C36.7075 31.26 35.8675 32.2225 34.8875 33.045C33.75 32.5375 32.735 31.75 31.93 30.875C29.3225 34.2525 24.055 34.2525 21.4475 30.875C18.875 34.2525 13.5725 34.2525 11 30.875C10.125 31.75 9.1625 32.5375 8.025 33.045C6.03 31.4 4.525 29.055 4 26.5H38.895C38.6231 27.7904 38.1255 29.0227 37.425 30.14ZM37.18 40.5C35.325 40.5 33.575 40.0625 31.93 39.1875C28.71 40.9375 24.6675 40.9375 21.4475 39.1875C18.2275 40.9375 14.185 40.9375 11 39.1875C8.8475 40.395 6.38 40.5875 4 40.5V37C6.4675 37.0875 8.8475 36.825 11 35.25C14.045 37.4375 18.3675 37.4375 21.4475 35.25C24.545 37.4375 28.85 37.4375 31.93 35.25C34.0475 36.825 36.445 37.0875 38.895 37V40.5H37.18Z"/>
+                </svg>
+              </div>
+            </div>
+
+            <div class="chat-header">
+              Obi-Wan Kenobi
+            </div>
+            <div class="chat-bubble text-xs md:text-sm lg:text-base py-1.5 px-2 sm:py-2 sm:px-4 max-w-[90%] sm:max-w-[65%] break-words">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur, consequatur expedita porro provident explicabo, sed aut eveniet eum qui quas cupiditate repudiandae delectus perspiciatis corrupti recusandae deleniti. Distinctio, ullam officia?</div>
+      </div>
+
+      <div class="chat chat-start last:pb-10">
         <div class="chat-image">
           <div class="btn btn-secondary btn-circle w-8 h-8 sm:w-11 sm:h-11 md:w-13 md:h-13  pointer-events-none">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8 fill-primary" viewBox="0 0 40 36" fill="none">
@@ -15,15 +45,13 @@
         <div class="chat-bubble text-xs md:text-sm lg:text-base py-1.5 px-2 sm:py-2 sm:px-4 max-w-[90%] sm:max-w-[65%] break-words">I hate you!</div>
       </div>
 
-      <div class="chat chat-end">
+      <div class="chat chat-end last:pb-10">
             <div class="chat-image">
-
               <div class="btn btn-secondary btn-circle w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 pointer-events-none">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 fill-primary" viewBox="0 0 42 42">
                     <path d="M5.75 23.875L19.75 3.8025V23.875H5.75ZM22.375 23.875C24.7375 17.3125 24.4225 8.4925 22.375 2C30.705 4.695 37.075 14.95 37.18 23.875H22.375ZM37.425 30.14C36.7075 31.26 35.8675 32.2225 34.8875 33.045C33.75 32.5375 32.735 31.75 31.93 30.875C29.3225 34.2525 24.055 34.2525 21.4475 30.875C18.875 34.2525 13.5725 34.2525 11 30.875C10.125 31.75 9.1625 32.5375 8.025 33.045C6.03 31.4 4.525 29.055 4 26.5H38.895C38.6231 27.7904 38.1255 29.0227 37.425 30.14ZM37.18 40.5C35.325 40.5 33.575 40.0625 31.93 39.1875C28.71 40.9375 24.6675 40.9375 21.4475 39.1875C18.2275 40.9375 14.185 40.9375 11 39.1875C8.8475 40.395 6.38 40.5875 4 40.5V37C6.4675 37.0875 8.8475 36.825 11 35.25C14.045 37.4375 18.3675 37.4375 21.4475 35.25C24.545 37.4375 28.85 37.4375 31.93 35.25C34.0475 36.825 36.445 37.0875 38.895 37V40.5H37.18Z"/>
                 </svg>
               </div>
-              
             </div>
 
             <div class="chat-header">
@@ -32,7 +60,7 @@
             <div class="chat-bubble text-xs md:text-sm lg:text-base py-1.5 px-2 sm:py-2 sm:px-4 max-w-[90%] sm:max-w-[65%] break-words">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur, consequatur expedita porro provident explicabo, sed aut eveniet eum qui quas cupiditate repudiandae delectus perspiciatis corrupti recusandae deleniti. Distinctio, ullam officia?</div>
       </div>
 
-      <div class="chat chat-start">
+      <div class="chat chat-start last:pb-10">
         <div class="chat-image">
           <div class="btn btn-secondary btn-circle w-8 h-8 sm:w-11 sm:h-11 md:w-13 md:h-13  pointer-events-none">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8 fill-primary" viewBox="0 0 40 36" fill="none">
@@ -46,15 +74,13 @@
         <div class="chat-bubble text-xs md:text-sm lg:text-base py-1.5 px-2 sm:py-2 sm:px-4 max-w-[90%] sm:max-w-[65%] break-words">I hate you!</div>
       </div>
 
-      <div class="chat chat-end">
+      <div class="chat chat-end last:pb-50">
             <div class="chat-image">
-
               <div class="btn btn-secondary btn-circle w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 pointer-events-none">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 fill-primary" viewBox="0 0 42 42">
                     <path d="M5.75 23.875L19.75 3.8025V23.875H5.75ZM22.375 23.875C24.7375 17.3125 24.4225 8.4925 22.375 2C30.705 4.695 37.075 14.95 37.18 23.875H22.375ZM37.425 30.14C36.7075 31.26 35.8675 32.2225 34.8875 33.045C33.75 32.5375 32.735 31.75 31.93 30.875C29.3225 34.2525 24.055 34.2525 21.4475 30.875C18.875 34.2525 13.5725 34.2525 11 30.875C10.125 31.75 9.1625 32.5375 8.025 33.045C6.03 31.4 4.525 29.055 4 26.5H38.895C38.6231 27.7904 38.1255 29.0227 37.425 30.14ZM37.18 40.5C35.325 40.5 33.575 40.0625 31.93 39.1875C28.71 40.9375 24.6675 40.9375 21.4475 39.1875C18.2275 40.9375 14.185 40.9375 11 39.1875C8.8475 40.395 6.38 40.5875 4 40.5V37C6.4675 37.0875 8.8475 36.825 11 35.25C14.045 37.4375 18.3675 37.4375 21.4475 35.25C24.545 37.4375 28.85 37.4375 31.93 35.25C34.0475 36.825 36.445 37.0875 38.895 37V40.5H37.18Z"/>
                 </svg>
               </div>
-              
             </div>
 
             <div class="chat-header">
@@ -62,36 +88,31 @@
             </div>
             <div class="chat-bubble text-xs md:text-sm lg:text-base py-1.5 px-2 sm:py-2 sm:px-4 max-w-[90%] sm:max-w-[65%] break-words">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur, consequatur expedita porro provident explicabo, sed aut eveniet eum qui quas cupiditate repudiandae delectus perspiciatis corrupti recusandae deleniti. Distinctio, ullam officia?</div>
       </div>
+    </div>
+     
+  </div>
 
-      <div class="chat chat-start">
-        <div class="chat-image">
-          <div class="btn btn-secondary btn-circle w-8 h-8 sm:w-11 sm:h-11 md:w-13 md:h-13  pointer-events-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8 fill-primary" viewBox="0 0 40 36" fill="none">
-              <path d="M20 0C20.9644 0 21.8893 0.379285 22.5713 1.05442C23.2532 1.72955 23.6364 2.64522 23.6364 3.6C23.6364 4.932 22.9091 6.102 21.8182 6.714V9H23.6364C27.0118 9 30.2491 10.3275 32.6359 12.6905C35.0227 15.0534 36.3636 18.2583 36.3636 21.6H38.1818C38.664 21.6 39.1265 21.7896 39.4675 22.1272C39.8084 22.4648 40 22.9226 40 23.4V28.8C40 29.2774 39.8084 29.7352 39.4675 30.0728C39.1265 30.4104 38.664 30.6 38.1818 30.6H36.3636V32.4C36.3636 33.3548 35.9805 34.2705 35.2986 34.9456C34.6166 35.6207 33.6917 36 32.7273 36H7.27273C6.3083 36 5.38338 35.6207 4.70143 34.9456C4.01948 34.2705 3.63636 33.3548 3.63636 32.4V30.6H1.81818C1.33597 30.6 0.873508 30.4104 0.532533 30.0728C0.191558 29.7352 0 29.2774 0 28.8V23.4C0 22.9226 0.191558 22.4648 0.532533 22.1272C0.873508 21.7896 1.33597 21.6 1.81818 21.6H3.63636C3.63636 18.2583 4.97727 15.0534 7.3641 12.6905C9.75092 10.3275 12.9882 9 16.3636 9H18.1818V6.714C17.0909 6.102 16.3636 4.932 16.3636 3.6C16.3636 2.64522 16.7468 1.72955 17.4287 1.05442C18.1107 0.379285 19.0356 0 20 0ZM11.8182 19.8C10.6127 19.8 9.4565 20.2741 8.60406 21.118C7.75162 21.9619 7.27273 23.1065 7.27273 24.3C7.27273 25.4935 7.75162 26.6381 8.60406 27.482C9.4565 28.3259 10.6127 28.8 11.8182 28.8C13.0237 28.8 14.1799 28.3259 15.0323 27.482C15.8847 26.6381 16.3636 25.4935 16.3636 24.3C16.3636 23.1065 15.8847 21.9619 15.0323 21.118C14.1799 20.2741 13.0237 19.8 11.8182 19.8ZM28.1818 19.8C26.9763 19.8 25.8201 20.2741 24.9677 21.118C24.1153 21.9619 23.6364 23.1065 23.6364 24.3C23.6364 25.4935 24.1153 26.6381 24.9677 27.482C25.8201 28.3259 26.9763 28.8 28.1818 28.8C29.3873 28.8 30.5435 28.3259 31.3959 27.482C32.2484 26.6381 32.7273 25.4935 32.7273 24.3C32.7273 23.1065 32.2484 21.9619 31.3959 21.118C30.5435 20.2741 29.3873 19.8 28.1818 19.8Z" fill="#011826"/>
-            </svg>
-          </div>
-        </div>
-        <div class="chat-header">
-          Anakin
-        </div>
-        <div class="chat-bubble text-xs md:text-sm lg:text-base py-1.5 px-2 sm:py-2 sm:px-4 max-w-[90%] sm:max-w-[65%] break-words">I hate you!</div>
+  <!-- Área de input fixa embaixo -->
+  <div class="w-full max-w-sm sm:max-w-lg md:max-w-2xl responsive mx-auto absolute bottom-0 px-2 responsive2 sm:px-0 md:px-0">
+    <fieldset class="bg-secondary rounded-4xl p-4 flex flex-col gap-2">
+      <textarea [value]="null"
+        class="text-base-100 w-full bg-secondary resize-none border-0 focus:outline-none p-2 rounded-xl
+        sm:text-sm text-xs placeholder-base-100/65  max-h-20 overflow-y-auto md:h-20"
+        (keydown.enter)="sendMessage($event)"
+        placeholder="Digite alguma coisa...">
+      </textarea>
+
+      <div class="flex justify-between items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-6 md:w-6 fill-primary cursor-pointer
+          hover:scale-110 active:scale-95 transition duration-200 ease-in-out" viewBox="0 0 25 25" fill="none">
+            <path d="M11.25 18.75H13.75V11.25H11.25V18.75ZM12.5 8.75C12.8542 8.75 13.1512 8.63 13.3912 8.39C13.6312 8.15 13.7508 7.85333 13.75 7.5C13.7492 7.14666 13.6292 6.85 13.39 6.61C13.1508 6.37 12.8542 6.25 12.5 6.25C12.1458 6.25 11.8492 6.37 11.61 6.61C11.3708 6.85 11.2508 7.14666 11.25 7.5C11.2492 7.85333 11.3692 8.15041 11.61 8.39125C11.8508 8.63208 12.1475 8.75166 12.5 8.75ZM12.5 25C10.7708 25 9.14583 24.6717 7.625 24.015C6.10416 23.3583 4.78125 22.4679 3.65625 21.3437C2.53125 20.2196 1.64083 18.8967 0.985001 17.375C0.329168 15.8533 0.000834915 14.2283 1.58228e-06 12.5C-0.000831751 10.7717 0.327501 9.14666 0.985001 7.625C1.6425 6.10333 2.53292 4.78042 3.65625 3.65625C4.77958 2.53208 6.1025 1.64167 7.625 0.985C9.1475 0.328333 10.7725 0 12.5 0C14.2275 0 15.8525 0.328333 17.375 0.985C18.8975 1.64167 20.2204 2.53208 21.3437 3.65625C22.4671 4.78042 23.3579 6.10333 24.0162 7.625C24.6746 9.14666 25.0025 10.7717 25 12.5C24.9975 14.2283 24.6692 15.8533 24.015 17.375C23.3608 18.8967 22.4704 20.2196 21.3437 21.3437C20.2171 22.4679 18.8942 23.3587 17.375 24.0162C15.8558 24.6737 14.2308 25.0017 12.5 25ZM12.5 22.5C15.2917 22.5 17.6562 21.5312 19.5937 19.5937C21.5312 17.6562 22.5 15.2917 22.5 12.5C22.5 9.70833 21.5312 7.34375 19.5937 5.40625C17.6562 3.46875 15.2917 2.5 12.5 2.5C9.70833 2.5 7.34375 3.46875 5.40625 5.40625C3.46875 7.34375 2.5 9.70833 2.5 12.5C2.5 15.2917 3.46875 17.6562 5.40625 19.5937C7.34375 21.5312 9.70833 22.5 12.5 22.5Z"/>
+          </svg>
+
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 md:h-10 md:w-10 fill-primary cursor-pointer
+          hover:scale-110 active:scale-95 transition duration-200 ease-in-out" viewBox="0 0 47 47" fill="none">
+            <path d="M21.15 32.9H25.85V23.03L29.61 26.79L32.9 23.5L23.5 14.1L14.1 23.5L17.39 26.79L21.15 23.03V32.9ZM23.5 47C20.2492 47 17.1942 46.3827 14.335 45.1482C11.4758 43.9137 8.98875 42.2397 6.87375 40.1262C4.75875 38.0128 3.08477 35.5257 1.8518 32.665C0.618836 29.8043 0.00156964 26.7493 2.97468e-06 23.5C-0.00156369 20.2507 0.615703 17.1957 1.8518 14.335C3.0879 11.4743 4.76188 8.98718 6.87375 6.87375C8.98561 4.76032 11.4727 3.08633 14.335 1.8518C17.1973 0.617267 20.2523 0 23.5 0C26.7477 0 29.8027 0.617267 32.665 1.8518C35.5273 3.08633 38.0144 4.76032 40.1262 6.87375C42.2381 8.98718 43.9129 11.4743 45.1505 14.335C46.3882 17.1957 47.0047 20.2507 47 23.5C46.9953 26.7493 46.378 29.8043 45.1482 32.665C43.9183 35.5257 42.2444 38.0128 40.1262 40.1262C38.0081 42.2397 35.521 43.9144 32.665 45.1505C29.8089 46.3866 26.754 47.0031 23.5 47Z"/>
+          </svg>
       </div>
-
-      <div class="chat chat-end">
-            <div class="chat-image">
-
-              <div class="btn btn-secondary btn-circle w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 pointer-events-none">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 fill-primary" viewBox="0 0 42 42">
-                    <path d="M5.75 23.875L19.75 3.8025V23.875H5.75ZM22.375 23.875C24.7375 17.3125 24.4225 8.4925 22.375 2C30.705 4.695 37.075 14.95 37.18 23.875H22.375ZM37.425 30.14C36.7075 31.26 35.8675 32.2225 34.8875 33.045C33.75 32.5375 32.735 31.75 31.93 30.875C29.3225 34.2525 24.055 34.2525 21.4475 30.875C18.875 34.2525 13.5725 34.2525 11 30.875C10.125 31.75 9.1625 32.5375 8.025 33.045C6.03 31.4 4.525 29.055 4 26.5H38.895C38.6231 27.7904 38.1255 29.0227 37.425 30.14ZM37.18 40.5C35.325 40.5 33.575 40.0625 31.93 39.1875C28.71 40.9375 24.6675 40.9375 21.4475 39.1875C18.2275 40.9375 14.185 40.9375 11 39.1875C8.8475 40.395 6.38 40.5875 4 40.5V37C6.4675 37.0875 8.8475 36.825 11 35.25C14.045 37.4375 18.3675 37.4375 21.4475 35.25C24.545 37.4375 28.85 37.4375 31.93 35.25C34.0475 36.825 36.445 37.0875 38.895 37V40.5H37.18Z"/>
-                </svg>
-              </div>
-              
-            </div>
-
-            <div class="chat-header">
-              Obi-Wan Kenobi
-            </div>
-            <div class="chat-bubble text-xs md:text-sm lg:text-base py-1.5 px-2 sm:py-2 sm:px-4 max-w-[90%] sm:max-w-[65%] break-words">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur, consequatur expedita porro provident explicabo, sed aut eveniet eum qui quas cupiditate repudiandae delectus perspiciatis corrupti recusandae deleniti. Distinctio, ullam officia?</div>
-      </div>
-    </div> 
+    </fieldset>
+  </div> 
 </div>
