@@ -167,28 +167,32 @@
         <h2 class="text-lg sm:text-2xl">Configuração de Conversa</h2>
       </div>
 
-      <div class="flex flex-col h-[40%] justify-between mb-5">
+      <div class="flex flex-col h-full justify-center space-y-5 mb-7">
         <fieldset class="fieldset">
           <legend class="fieldset-legend">Modelo de Linguagem</legend>
           <select class="select" [(ngModel)]="selectedModel">
             <option disabled selected value="none">Selecione um modelo de linguagem</option>
-            <option value="GPT">GPT</option>
+            <option value="gpt-4o">GPT</option>
             <option value="Gemini">Gemini</option>
             <option value="Llama">Llama</option>
           </select>
         </fieldset>
 
         <fieldset class="fieldset">
+          <legend class="fieldset-legend">Chave de API do Modelo</legend>
+          <input type="text" class="input" placeholder="Digite aqui" [(ngModel)]="apiKey"/>
+        </fieldset>
+
+        <fieldset class="fieldset">
           <legend class="fieldset-legend">Engenharia de Prompt</legend>
           <select class="select" [(ngModel)]="selectedEngineering">
             <option disabled selected value="none">Selecione uma engenharia de prompt</option>
-            <option value="Enegenharia 1">Enegenharia 1</option>
+            <option value="one-shot">One shot</option>
             <option value="Enegenharia 2">Enegenharia 2</option>
             <option value="Enegenharia 3">Enegenharia 3</option>
           </select>
         </fieldset>
       </div>
-      
 
       <!-- Botões -->
       <div class="px-4 pb-3 flex flex-row justify-center sm:px-6 sm:justify-between sm:p-6 sm:pt-4 mt-3 md:w-md flex-wrap">
@@ -227,7 +231,7 @@
          [ngClass]="{'md:justify-center': modalAnswered}">
         <button *ngIf="!modalAnswered" (click)="prev()" type="button" class="btn btn-accent inline-flex justify-center px-3 py-2 text-sm font-semibold shadow-xs w-40 rounded-4xl">Anterior</button>
         <button (click)="next()" type="button" class="btn btn-accent inline-flex justify-center px-3 py-2 text-sm font-semibold shadow-xs w-40 rounded-4xl mt-3 sm:mt-0">Próximo</button>
-        <!-- <button (click)="closeModal()" type="button" class="btn btn-sm btn-circle btn-ghost absolute right-0 top-0 sm:right-2 sm:top-2">✕</button> -->
+        <button *ngIf="modalAnswered" (click)="closeModal()" type="button" class="btn btn-sm btn-circle btn-ghost absolute right-0 top-0 sm:right-2 sm:top-2">✕</button>
       </div>
     </div>
 
@@ -260,7 +264,7 @@
       <div class="px-4 pb-3 flex flex-row justify-center sm:px-6 sm:justify-between sm:p-6 sm:pt-4 mt-3 md:w-md flex-wrap">
         <button (click)="prev()" type="button" class="btn btn-accent inline-flex justify-center px-3 py-2 text-sm font-semibold shadow-xs w-40 rounded-4xl">Anterior</button>
         <button (click)="next()" type="button" class="btn btn-accent inline-flex justify-center px-3 py-2 text-sm font-semibold shadow-xs w-40 rounded-4xl mt-3 sm:mt-0">Próximo</button>
-        <!-- <button (click)="closeModal()" type="button" class="btn btn-sm btn-circle btn-ghost absolute right-0 top-0 sm:right-2 sm:top-2">✕</button> -->
+        <button *ngIf="modalAnswered" (click)="closeModal()" type="button" class="btn btn-sm btn-circle btn-ghost absolute right-0 top-0 sm:right-2 sm:top-2">✕</button>
       </div>
     </div>
 
@@ -294,7 +298,7 @@
         <button (click)="prev()" type="button" class="btn btn-accent inline-flex justify-center px-3 py-2 text-sm font-semibold shadow-xs w-40 rounded-4xl">Anterior</button>
         <button *ngIf="!modalAnswered" (click)="submitModal()" type="button" class="btn btn-primary inline-flex justify-center px-3 py-2 text-sm font-semibold shadow-xs w-40 rounded-4xl mt-3 sm:mt-0">Ok</button>
         <button *ngIf="modalAnswered" (click)="closeModal()" type="button" class="btn btn-primary inline-flex justify-center px-3 py-2 text-sm font-semibold shadow-xs w-40 rounded-4xl mt-3 sm:mt-0">Ok</button>
-        <!-- <button (click)="closeModal()" type="button" class="btn btn-sm btn-circle btn-ghost absolute right-0 top-0 sm:right-2 sm:top-2">✕</button> -->
+        <button *ngIf="modalAnswered" (click)="closeModal()" type="button" class="btn btn-sm btn-circle btn-ghost absolute right-0 top-0 sm:right-2 sm:top-2">✕</button>
       </div>
     </div>
 

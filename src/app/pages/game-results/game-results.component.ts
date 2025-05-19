@@ -13,11 +13,5 @@ export class GameResultsComponent {
     private router: Router,
   ) {}
 
-  ngOnInit(): void {
-    var step = localStorage.getItem('step') 
-    if(step == null || Number(step) == 0)
-        this.router.navigate(['/'])
-    if(Number(step) == 1)
-      this.router.navigate(['/chat'])
-  }
+  ngOnInit(): void {}
 }

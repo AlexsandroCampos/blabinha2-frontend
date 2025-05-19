@@ -1,6 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms'; 
+import { ChatService } from '../../core/services/chat.service';
+import { ChatCreate } from '../../core/models/chat.model';
+import { first } from 'rxjs';
 
 @Component({
   selector: 'app-phase-modal',
@@ -15,7 +18,10 @@ export class PhaseModalComponent {
   selectedAvatar: Number = -1
   selectedModel: string = "none"
   selectedEngineering: string = "none"
+  apiKey: string = ""
   alerts: string[] = []
+
+  constructor(private chatService: ChatService) {  }
 
   openModal(info: boolean) {
     this.modalAnswered = Boolean(localStorage.getItem('modalAnswered'))
@@ -28,26 +34,34 @@ export class PhaseModalComponent {
   }
 
   closeModal() {
-    this.modalOpen = false;
+    this.modalOpen = false
   }
 
   next() {
-    this.currentStep++;
+    this.currentStep++
   }
 
   prev() {
-    this.currentStep--;
+    this.currentStep--
   }
 
   submitModal() {
     if(this.validateForm())
       return
     
-    localStorage.setItem('modalAnswered', 'true');
-    localStorage.setItem('selectedModel', this.selectedModel)
-    localStorage.setItem('selectedAvatar', this.selectedAvatar.toString())
-    localStorage.setItem('selectedEngineering', this.selectedEngineering)
-    this.closeModal();
+    localStorage.setItem('modalAnswered', 'true')
+    localStorage.setItem('apiKey', this.apiKey)
+    this.chatService.postChat(new ChatCreate(this.selectedModel, this.selectedEngineering, 100))
+      .pipe(first())
+      .subscribe({
+        next: chat => {
+          localStorage.setItem('chatId', chat.id.toString())
+          console.log(chat)
+        },
+        // error: error => this.handleError(error)
+      });
+    
+    this.closeModal()
   }
 
   validateForm(): boolean {
@@ -59,6 +73,11 @@ export class PhaseModalComponent {
 
     if (this.selectedModel == 'none') {
       this.showAlert('Selecione um modelo de linguagem')
+      error = true
+    }
+
+    if (this.apiKey == '') {
+      this.showAlert('Digite uma chave de API')
       error = true
     }
 

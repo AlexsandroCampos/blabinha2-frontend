@@ -15,13 +15,7 @@ export class ChatComponent {
     private router: Router,
   ) {}
 
-  ngOnInit(): void {
-    var step = localStorage.getItem('step') 
-    if(step == null || Number(step) == 0)
-        this.router.navigate(['/'])
-    if(Number(step) == 2)
-      this.router.navigate(['/results'])
-  }
+  ngOnInit(): void {}
 
   ngAfterViewInit(): void {
     setTimeout(() => this.scrollToBottom(), 0);

@@ -17,15 +17,7 @@ export class HomeComponent implements AfterViewInit {
     private router: Router,
   ) {}
 
-  ngOnInit(): void {
-    var step = localStorage.getItem('step') 
-    if(step == null)
-      localStorage.setItem('step', "0");
-    if(Number(step) == 1)
-      this.router.navigate(['/chat'])
-    if(Number(step) == 2)
-      this.router.navigate(['/results'])
-  }
+  ngOnInit(): void {}
 
   ngAfterViewInit(): void {
     setTimeout(() => this.modalComponent.openModal(false))
@@ -37,10 +29,11 @@ export class HomeComponent implements AfterViewInit {
     if (!textarea) return
 
     const rawMessage = textarea.value.trim();
-    textarea.value = "";
 
     if (!rawMessage || rawMessage.replace(/\s/g, '') === '')
       return
+
+    textarea.value = "";
 
     localStorage.setItem('step', "1");
     this.router.navigate(['/chat'])
