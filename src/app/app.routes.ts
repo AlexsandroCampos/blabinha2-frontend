@@ -11,7 +11,7 @@ export const routes: Routes = [
         component: MainLayoutComponent,
         children: [
             { path: '', component: HomeComponent, title: 'Home', canActivate: [stepGuard], data: { step: 0 }},
-            { path: 'chat', component: ChatComponent, title: 'Chat', canActivate: [stepGuard], data: { step: 1 } },
+            { path: 'chat/:id', component: ChatComponent, title: 'Chat', canActivate: [stepGuard], data: { step: 1 } },
         ],
     },
     {

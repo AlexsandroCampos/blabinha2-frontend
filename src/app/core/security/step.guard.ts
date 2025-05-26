@@ -9,16 +9,19 @@ export const stepGuard: CanActivateFn = (
   const expectedStep = Number(route.data['step']);
   const currentStep = Number(localStorage.getItem('step')) || 0;
 
-  if (currentStep === expectedStep)
-    return true
+  const id = route.params['id'] || localStorage.getItem('chatId');
+
+  if (currentStep === expectedStep) {
+    return true;
+  }
 
   switch (currentStep) {
     case 0:
-      return router.parseUrl('/');    
+      return router.parseUrl('/');
     case 1:
-      return router.parseUrl('/chat')
+      return router.parseUrl(`/chat/${id || ''}`); 
     case 2:
-      return router.parseUrl('/results')
+      return router.parseUrl('/results');
     default:
       return router.parseUrl('/');
   }

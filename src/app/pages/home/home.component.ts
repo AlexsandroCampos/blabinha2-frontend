@@ -35,7 +35,10 @@ export class HomeComponent implements AfterViewInit {
 
     textarea.value = "";
 
+    // TODO: sendMessage here
+
     localStorage.setItem('step', "1");
-    this.router.navigate(['/chat'])
+    var id = localStorage.getItem("chatId")    
+    this.router.navigate(['/chat', id])
   }
 }
