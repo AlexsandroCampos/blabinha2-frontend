@@ -1,7 +1,7 @@
 import { DialogPublic } from "./dialog.model";
 
 export interface ChatPublicWithDialogs {
-    id: number;
+    id: string;
     model: string;
     strategy: string;
     state: ChatState;
@@ -16,7 +16,7 @@ export interface ChatPublicWithDialogs {
 }
 
 export interface ChatPublic {
-    id: number;
+    id: string;
     model: string;
     strategy: string;
     state: ChatState;

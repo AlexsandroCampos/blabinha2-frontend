@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { RouterOutlet } from '@angular/router';
@@ -10,5 +10,15 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './main-layout.component.css'
 })
 export class MainLayoutComponent {
+  @ViewChild('scrollContainer') private scrollContainer!: ElementRef;
+  ngAfterViewChecked() {
+    this.scrollToBottom();
+  }
+
+  private scrollToBottom(): void {
+    try {
+      this.scrollContainer.nativeElement.scrollTop = this.scrollContainer.nativeElement.scrollHeight;
+    } catch (err) { }
+  }
 
 }

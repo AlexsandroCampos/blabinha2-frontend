@@ -11,16 +11,19 @@ import { NavbarService } from '../../core/services/navbar.service';
 })
 export class NavbarComponent {
   @ViewChild(TipsModalComponent) modalComponent!: TipsModalComponent;
-  step = Number(localStorage.getItem('step')) || 0
+  step = 0
   selectedAvatar: number = 0
 
   constructor(private navbarService: NavbarService) {}
 
   ngOnInit() {
-  this.navbarService.currentAvatar.subscribe(avatar => {
-    this.selectedAvatar = avatar;
-  });
-}
+    this.navbarService.currentAvatar.subscribe(avatar => {
+      this.selectedAvatar = avatar;
+    });
+    this.navbarService.currentstep.subscribe(step => {
+      this.step = step;
+    });
+  }
 
   openModal() {
     this.modalComponent.openModal();
