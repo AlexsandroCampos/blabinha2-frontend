@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { DialogService } from '../../core/services/dialog.service';
 import { first } from 'rxjs';
 import { PhaseModalComponent } from '../../shared/phase-modal/phase-modal.component';
+import { NavbarService } from '../../core/services/navbar.service';
 
 @Component({
   selector: 'app-chat',
@@ -27,19 +28,16 @@ export class ChatComponent {
     private route: ActivatedRoute,
     private chatService: ChatService,
     private dialogService: DialogService,
+    private navbarService: NavbarService,
   ) {}
 
   ngOnInit(): void {
     const chatId = this.route.snapshot.paramMap.get('id') || ""
     this.selectedAvatar = Number(localStorage.getItem('selectedAvatar'))
-    // this.chatService.getDialogsByChatId(chatId).subscribe(dialogs => {
-    //   this.dialogs = dialogs
-    //   console.log(dialogs)
-    // })
-
-    //ou isto:
     this.chatService.getChatById(chatId).subscribe(chat => {
       this.dialogs = chat.dialogs
+      this.navbarService.setStar(chat.stars)
+      this.navbarService.setBonus(chat.bonusQnt)
       console.log(this.dialogs)
     })
   }

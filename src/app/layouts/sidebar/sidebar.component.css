@@ -17,3 +17,7 @@
   color: var(--color-base-100)!important;
   border: none;
 }
+
+.bg-opacity-10 {
+  --tw-bg-opacity: 0.1;
+}

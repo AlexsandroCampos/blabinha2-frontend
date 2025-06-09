@@ -65,7 +65,7 @@ export class PhaseModalComponent {
           localStorage.setItem('modalAnswered', 'true')
           localStorage.setItem('selectedAvatar', this.selectedAvatar.toString())
           localStorage.setItem('apiKey', this.apiKey)
-          this.navbarService.setData(this.selectedAvatar)
+          this.navbarService.setAvatar(this.selectedAvatar)
           this.closeModal()
         },
         error: error => this.handleError(error)

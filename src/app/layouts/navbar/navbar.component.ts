@@ -13,6 +13,8 @@ export class NavbarComponent {
   @ViewChild(TipsModalComponent) modalComponent!: TipsModalComponent;
   step = 0
   selectedAvatar: number = 0
+  stars: number = 0
+  bonus:number = 0
 
   constructor(private navbarService: NavbarService) {}
 
@@ -22,6 +24,12 @@ export class NavbarComponent {
     });
     this.navbarService.currentstep.subscribe(step => {
       this.step = step;
+    });
+    this.navbarService.currentStars.subscribe(stars => {
+      this.stars = stars;
+    });
+    this.navbarService.currentbonus.subscribe(bonus => {
+      this.bonus = bonus;
     });
   }
 

@@ -55,7 +55,7 @@ export class HomeComponent implements AfterViewInit {
       .pipe(first())
       .subscribe({
         next: dialog => {
-          this.navbarService.setData2(1)
+          this.navbarService.setStep(1)
           localStorage.setItem('step', "1");
           this.router.navigate(['/chat', id])
           console.log(dialog)
