@@ -27,4 +27,8 @@ export class ChatService extends BaseService {
   getChatById(chatId: string): Observable<ChatPublicWithDialogs> {
     return this.httpClient.get<ChatPublicWithDialogs>(`${this.baseUrl}/${chatId}`, this.getHttpOptions());
   }
+
+  getSuggetionsByChatId(chatId: string): Observable<string[]> {
+    return this.httpClient.get<string[]>(`${this.baseUrl}/${chatId}/suggestions`, this.getHttpOptions());
+  }
 }

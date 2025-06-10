@@ -32,15 +32,21 @@
         <h2 class="text-lg sm:text-2xl">Sugestões de Perguntas</h2>
       </div>
 
-      <div class="flex flex-col w-xs px-8 sm:px-0 sm:w-sm h-[50%] justify-around">
-        <input class="join-item btn rounded-4xl" type="radio" name="options" aria-label="Radio 1" />
-        <input class="join-item btn rounded-4xl" type="radio" name="options" aria-label="Radio 2" />
-        <input class="join-item btn rounded-4xl" type="radio" name="options" aria-label="Radio 3" />
+      <div class="flex flex-col w-xs px-8 sm:px-0 sm:w-sm h-[60%] justify-around">
+        <input
+          *ngFor="let suggestion of suggestions; let i = index"
+          class="join-item btn rounded-4xl"
+          type="radio"
+          name="options"
+          [attr.aria-label]="suggestion"
+          [value]="i"
+          [(ngModel)]="selectedSuggestion"
+        />
       </div>
 
       <!-- Botões -->
       <div class="px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 sm:justify-center sm:p-6 sm:pt-4">
-        <button type="button" class="btn btn-accent inline-flex justify-center px-3 py-2 text-sm font-semibold shadow-xs w-40 rounded-4xl">Ok</button>
+        <button (click)="sendMessage()" type="button" class="btn btn-accent inline-flex justify-center px-3 py-2 text-sm font-semibold shadow-xs w-40 rounded-4xl">Ok</button>
         <button (click)="closeModal()" type="button" class="btn btn-sm btn-circle btn-ghost absolute right-0 top-0 sm:right-2 sm:top-2">✕</button>
       </div>
     </div>

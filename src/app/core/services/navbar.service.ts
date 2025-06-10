@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
@@ -20,6 +20,13 @@ export class NavbarService {
   private bonussource = new BehaviorSubject<number>(0);
   currentbonus = this.bonussource.asObservable();
 
+  private triggerChatFunction = new Subject<string>();
+  triggerChatFunction$ = this.triggerChatFunction.asObservable();
+
+  callChatFunction(suggestion: string) {
+    this.triggerChatFunction.next(suggestion);
+  }
+  
   setAvatar(avatar: number) {
     this.avatarSource.next(avatar);
   }

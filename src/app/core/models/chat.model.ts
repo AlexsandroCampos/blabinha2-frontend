@@ -13,6 +13,7 @@ export interface ChatPublicWithDialogs {
     created_at: string;
     updated_at: string;
     dialogs: DialogPublic[];
+    username: string;
 }
 
 export interface ChatPublic {
@@ -27,6 +28,7 @@ export interface ChatPublic {
     totalTokens: number;
     created_at: string;
     updated_at: string;
+    username: string;
 }
 
 export class ChatCreate {

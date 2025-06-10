@@ -8,6 +8,7 @@ export interface DialogPublicWithChat {
     tokens: number;
     created_at: string;
     chat: ChatPublic;
+    emotion: number;
 }
 
 export interface DialogPublic {
@@ -17,6 +18,7 @@ export interface DialogPublic {
     section: number;
     tokens: number;
     created_at: string;
+    emotion: number;
 }
 
 export class DialogPublic2 {
@@ -26,14 +28,16 @@ export class DialogPublic2 {
     section: number;
     tokens: number;
     created_at: string;
+    emotion: number;
 
-    constructor(id: string, answer: string, input: string, section: number, tokens: number, created:string) {
+    constructor(id: string, answer: string, input: string, section: number, tokens: number, created:string, emotion:number) {
       this.answer = answer;
       this.created_at = created;
       this.id = id;
       this.input = input;
       this.section = section;
       this.tokens = tokens;
+      this.emotion = emotion;
     }
 }
 

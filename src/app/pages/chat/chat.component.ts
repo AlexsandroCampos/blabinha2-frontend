@@ -22,6 +22,8 @@ export class ChatComponent {
   typeOfError: number = 0
   stars: number = 0
   selectedAvatar: number = 0
+  username: string = ""
+  blocks: string[] = [];
 
   constructor(
     private router: Router,
@@ -32,38 +34,48 @@ export class ChatComponent {
   ) {}
 
   ngOnInit(): void {
+    this.navbarService.triggerChatFunction$.subscribe((suggestion: string) => {
+      this.sendMessage(suggestion);
+    });
     const chatId = this.route.snapshot.paramMap.get('id') || ""
     this.selectedAvatar = Number(localStorage.getItem('selectedAvatar'))
     this.chatService.getChatById(chatId).subscribe(chat => {
       this.dialogs = chat.dialogs
+      this.username = chat.username
       this.navbarService.setStar(chat.stars)
       this.navbarService.setBonus(chat.bonusQnt)
       console.log(this.dialogs)
     })
   }
 
-  sendMessage(): void {
+  sendMessage(str: string): void {
+    var rawMessage = ''
+    if(str == '') {
+      var textarea = document.getElementById("textarea") as HTMLTextAreaElement
 
-    var textarea = document.getElementById("textarea") as HTMLTextAreaElement
+      if (!textarea) return
 
-    if (!textarea) return
+      rawMessage = textarea.value.trim();
 
-    const rawMessage = textarea.value.trim();
+      if (!rawMessage || rawMessage.replace(/\s/g, '') === '')
+        return
 
-    if (!rawMessage || rawMessage.replace(/\s/g, '') === '')
-      return
+      textarea.value = "";
+    }
+
+    else 
+      rawMessage = str
 
     var id = localStorage.getItem("chatId") || ""
 
-    textarea.value = "";
-
-    this.dialogs.push(new DialogPublic2("", "", rawMessage, 0, 0, ""));
+    this.dialogs.push(new DialogPublic2("", "", rawMessage, 0, 0, "", 0));
 
     this.dialogService.postDialog(new DialogCreate(id, rawMessage))
       .pipe(first())
       .subscribe({
         next: dialog => {
           this.dialogs[this.dialogs.length-1] = dialog
+          this.username = dialog.chat.username
           console.log(dialog)
         },
         error: error => this.handleError(error)
@@ -94,11 +106,13 @@ export class ChatComponent {
     this.showAlert("Ocorreu um erro. Tente novamente mais tarde")
   }
 
-  cleanMessage(message: string): string {
+  cleanMessage(message: string) {
     if (!message) {
-      return ''
+      return
     }
- 
-    return message.replace(/^\|\|/, '');
+
+    this.blocks = message.split('||').map(b => 
+    b.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    );
   } 
 }
