@@ -1,7 +1,7 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ChatService } from '../../core/services/chat.service';
-import { DialogCreate, DialogPublic, DialogPublic2 } from '../../core/models/dialog.model';
+import { DialogCreate, DialogPublic, DialogPublic2, DialogPublicWithChat } from '../../core/models/dialog.model';
 import { CommonModule } from '@angular/common';
 import { DialogService } from '../../core/services/dialog.service';
 import { first } from 'rxjs';
@@ -44,6 +44,7 @@ export class ChatComponent {
       this.username = chat.username
       this.navbarService.setStar(chat.stars)
       this.navbarService.setBonus(chat.bonusQnt)
+      this.navbarService.setSection(chat.current_section)
       console.log(this.dialogs)
     })
   }
@@ -76,12 +77,16 @@ export class ChatComponent {
         next: dialog => {
           this.dialogs[this.dialogs.length-1] = dialog
           this.username = dialog.chat.username
+          this.navbarService.setStar(dialog.chat.stars)
+          this.navbarService.setBonus(dialog.chat.bonusQnt)
+          this.navbarService.setSection(dialog.section)
+          this.scrollToBottom()
+          this.handleEndOfGame(dialog)
           console.log(dialog)
         },
         error: error => this.handleError(error)
     });
 
-    this.scrollToBottom()
   }
 
   scrollToBottom(): void {
@@ -114,5 +119,16 @@ export class ChatComponent {
     this.blocks = message.split('||').map(b => 
     b.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
     );
-  } 
+  }
+
+  handleEndOfGame(dialog:DialogPublicWithChat) {
+    if(dialog.section == 142 || (dialog.section >= 290 && dialog.section < 300) || 
+      (dialog.section >= 370 && dialog.section < 380)) {
+      setTimeout(() => {
+        this.navbarService.setStep(2)
+        localStorage.setItem('step', "2");
+        this.router.navigate(['chat', dialog.chat.id, 'results']);
+      }, 20000);
+    }
+  }
 }

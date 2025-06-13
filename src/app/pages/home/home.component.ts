@@ -6,6 +6,8 @@ import { DialogService } from '../../core/services/dialog.service';
 import { first } from 'rxjs';
 import { NavbarService } from '../../core/services/navbar.service';
 import { DialogCreate } from '../../core/models/dialog.model';
+import { ChatService } from '../../core/services/chat.service';
+import { ChatCreate } from '../../core/models/chat.model';
 
 @Component({
   selector: 'app-home',
@@ -21,10 +23,33 @@ export class HomeComponent implements AfterViewInit {
   constructor(
     private router: Router,
     private dialogService: DialogService,
-    private navbarService: NavbarService
+    private navbarService: NavbarService,
+    private chatService: ChatService,
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const navigation = this.router.getCurrentNavigation();
+    const state = history.state as {
+      myData?: {
+        model: string;
+        selectedEngineering: string;
+      };
+    };
+    console.log(state)
+    if(state?.myData) {
+      const model = state.myData.model;
+      const selectedEngineering = state.myData.selectedEngineering;
+      this.chatService.postChat(new ChatCreate(model, selectedEngineering, 100))
+      .pipe(first())
+      .subscribe({
+        next: chat => {
+          localStorage.setItem('chatId', chat.id.toString())
+          console.log(chat)
+        },
+        error: error => this.handleError(error)
+      });
+    }
+  }
 
   ngAfterViewInit(): void {
     setTimeout(() => this.modalComponent.openModal(false))

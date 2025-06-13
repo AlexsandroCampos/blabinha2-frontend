@@ -15,7 +15,7 @@ export const routes: Routes = [
         ],
     },
     {
-        path: 'results',
+        path: 'chat/:id/results',
         component: GameResultsComponent,
         title: 'GameResults',
         canActivate: [stepGuard], 

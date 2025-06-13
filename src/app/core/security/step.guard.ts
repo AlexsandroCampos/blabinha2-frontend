@@ -21,7 +21,7 @@ export const stepGuard: CanActivateFn = (
     case 1:
       return router.parseUrl(`/chat/${id || ''}`); 
     case 2:
-      return router.parseUrl('/results');
+      return router.parseUrl(`/chat/${id || ''}/results`);
     default:
       return router.parseUrl('/');
   }

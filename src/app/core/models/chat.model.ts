@@ -8,12 +8,14 @@ export interface ChatPublicWithDialogs {
     bonusQnt: number;
     stars: number;
     repetition: number;
-    heroFeature: boolean;
+    heroFeatures: boolean;
     totalTokens: number;
     created_at: string;
     updated_at: string;
     dialogs: DialogPublic[];
     username: string;
+    current_section: number;
+    image: string;
 }
 
 export interface ChatPublic {
@@ -24,11 +26,12 @@ export interface ChatPublic {
     bonusQnt: number;
     stars: number;
     repetition: number;
-    heroFeature: boolean;
+    heroFeatures: boolean;
     totalTokens: number;
     created_at: string;
     updated_at: string;
     username: string;
+    current_section: number;
 }
 
 export class ChatCreate {

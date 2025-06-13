@@ -23,6 +23,9 @@ export class NavbarService {
   private triggerChatFunction = new Subject<string>();
   triggerChatFunction$ = this.triggerChatFunction.asObservable();
 
+  private playagainSource = new BehaviorSubject<boolean>(false);
+  currentPlayagain = this.playagainSource.asObservable();
+
   callChatFunction(suggestion: string) {
     this.triggerChatFunction.next(suggestion);
   }
@@ -45,5 +48,9 @@ export class NavbarService {
 
   setBonus(bonus: number) {
     this.bonussource.next(bonus);
+  }
+
+  setPlayAgain(playAgain: boolean) {
+    this.playagainSource.next(playAgain);
   }
 }
