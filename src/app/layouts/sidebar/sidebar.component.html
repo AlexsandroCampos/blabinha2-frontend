@@ -26,11 +26,11 @@
        <ul class="space-y-5 w-full my-auto" id="ul2">
         <li  class="flex items-center justify-center tooltip tooltip-right custom-tooltip transition-all duration-300" data-tip="Apresentação"
             [ngClass]="{
-            'rounded-full outline-2 p-3': (section >= 100 && section < 200)
+            'rounded-full outline-2 p-3': (section >= 100 && section < 200 && step === 1)
         }">
             <svg xmlns="http://www.w3.org/2000/svg" class="transition-all duration-300" width="30" height="23" viewBox="0 0 30 23" fill="currentColor"
              [ngClass]="{
-                'scale-143 fill-base-100': section >= 100 && section < 200,
+                'scale-143 fill-base-100': (section >= 100 && section < 200 && step === 1),
                 'fill-base-100/30': section >= 200
                 }"
             >
@@ -84,7 +84,7 @@
       <ul class="space-y-3 w-full mt-10 hidden" id="ul">
         <li class="transition-opacity duration-300 opacity-0 whitespace-nowrap bg-custom-gradient-li rounded-xl"
         [ngClass]="{
-            'outline-3': (section >= 100 && section < 200),
+            'outline-3': (section >= 100 && section < 200 && step === 1),
         }">
             <div class="p-3.5 flex items-center justify-center"
                 [ngClass]="{

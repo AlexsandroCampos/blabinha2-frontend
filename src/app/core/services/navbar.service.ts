@@ -26,6 +26,17 @@ export class NavbarService {
   private playagainSource = new BehaviorSubject<boolean>(false);
   currentPlayagain = this.playagainSource.asObservable();
 
+  private messageSource = new BehaviorSubject<string | null>(null);
+  currentMessage = this.messageSource.asObservable();
+
+  setMessage(message: string) {
+    this.messageSource.next(message);
+  }
+
+  clearMessage() {
+    this.messageSource.next(null);
+  }
+
   callChatFunction(suggestion: string) {
     this.triggerChatFunction.next(suggestion);
   }

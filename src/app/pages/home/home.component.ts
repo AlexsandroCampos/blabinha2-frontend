@@ -76,19 +76,10 @@ export class HomeComponent implements AfterViewInit {
     
     var id = localStorage.getItem("chatId") || ""
 
-    this.dialogService.postDialog(new DialogCreate(id, rawMessage))
-      .pipe(first())
-      .subscribe({
-        next: dialog => {
-          this.navbarService.setStep(1)
-          localStorage.setItem('step', "1");
-          this.router.navigate(['/chat', id])
-          console.log(dialog)
-        },
-        error: error => {
-          this.handleError(error);
-        } 
-      });
+    this.navbarService.setStep(1)
+    localStorage.setItem('step', "1");
+    this.navbarService.setMessage(rawMessage);
+    this.router.navigate(['/chat', id]);
   }
 
   showAlert(message: string) {

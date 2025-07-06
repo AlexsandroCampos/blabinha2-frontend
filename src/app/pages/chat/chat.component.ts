@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ChatService } from '../../core/services/chat.service';
 import { DialogCreate, DialogPublic, DialogPublic2, DialogPublicWithChat } from '../../core/models/dialog.model';
@@ -14,7 +14,7 @@ import { NavbarService } from '../../core/services/navbar.service';
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.css'
 })
-export class ChatComponent {
+export class ChatComponent implements AfterViewInit {
   @Input() mensagensMaxHeight: String = ''
   @ViewChild(PhaseModalComponent) modalComponent!: PhaseModalComponent
   dialogs: DialogPublic[] = []
@@ -24,6 +24,7 @@ export class ChatComponent {
   selectedAvatar: number = 0
   username: string = ""
   blocks: string[] = [];
+  messageToSend: string | null = null;
 
   constructor(
     private router: Router,
@@ -31,9 +32,17 @@ export class ChatComponent {
     private chatService: ChatService,
     private dialogService: DialogService,
     private navbarService: NavbarService,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
+    this.navbarService.currentMessage.subscribe(message => {
+      if (message) {
+       this.messageToSend = message;
+        this.navbarService.clearMessage();
+      }
+    });
+
     this.navbarService.triggerChatFunction$.subscribe((suggestion: string) => {
       this.sendMessage(suggestion);
     });
@@ -47,6 +56,15 @@ export class ChatComponent {
       this.navbarService.setSection(chat.current_section)
       console.log(this.dialogs)
     })
+  }
+
+  ngAfterViewInit(): void {
+    if (this.messageToSend) {
+      setTimeout(() => {
+        this.sendMessage(this.messageToSend!);
+        this.messageToSend = null;
+      }, 500);
+    }
   }
 
   sendMessage(str: string): void {
@@ -69,22 +87,35 @@ export class ChatComponent {
 
     var id = localStorage.getItem("chatId") || ""
 
-    this.dialogs.push(new DialogPublic2("", "", rawMessage, 0, 0, "", 0));
+    // Adicionar o diálogo do usuário imediatamente para mostrar na tela
+    const userDialog = new DialogPublic2("", "", rawMessage, 0, 0, "", 0);
+    this.dialogs.push(userDialog);
+
+    // Força a detecção de mudanças para atualizar a view
+    this.cdr.detectChanges();
+    setTimeout(() => {
+      this.scrollToBottom();
+    }, 50);
 
     this.dialogService.postDialog(new DialogCreate(id, rawMessage))
       .pipe(first())
       .subscribe({
         next: dialog => {
+          // Substitui o diálogo temporário pelo real retornado do servidor
           this.dialogs[this.dialogs.length-1] = dialog
           this.username = dialog.chat.username
           this.navbarService.setStar(dialog.chat.stars)
           this.navbarService.setBonus(dialog.chat.bonusQnt)
           this.navbarService.setSection(dialog.section)
-          this.scrollToBottom()
+          setTimeout(() => {
+            this.scrollToBottom()
+          }, 100);
           this.handleEndOfGame(dialog)
           console.log(dialog)
         },
-        error: error => this.handleError(error)
+        error: error => {
+          this.handleError(error);
+        }
     });
 
   }
@@ -117,7 +148,7 @@ export class ChatComponent {
     }
 
     this.blocks = message.split('||').map(b => 
-    b.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      b.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
     );
   }
 

@@ -1,9 +1,9 @@
 <div class="flex flex-col items-center"> <!-- Toda a altura da tela -->
   <!-- Área de mensagens com rolagem -->
   <div class="flex-1 px-4 w-full h-full flex flex-col items-center">
-    <div class="w-full max-w-sm sm:max-w-lg md:max-w-2xl responsive mx-auto">
+    <div class="w-full max-w-sm sm:max-w-lg md:max-w-2xl responsive mx-auto" id="chat">
 
-      <div *ngFor="let dialog of dialogs"  class="last:mb-50" id="chat">
+      <div *ngFor="let dialog of dialogs"  class="last:mb-50">
         <div class="chat chat-end">
               <div class="chat-image">
                 <div class="btn btn-secondary btn-circle w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 pointer-events-none">

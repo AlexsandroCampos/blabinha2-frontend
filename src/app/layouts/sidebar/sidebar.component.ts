@@ -10,12 +10,17 @@ import { NavbarService } from '../../core/services/navbar.service';
 })
 export class SidebarComponent {
   section: number = 0
+  step = 0
   
   constructor(private navbarService: NavbarService) {}
   
   ngOnInit() {
     this.navbarService.currentSection.subscribe(section => {
       this.section = section;
+    });
+
+    this.navbarService.currentstep.subscribe(step => {
+      this.step = step;
     });
   }
 
