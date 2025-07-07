@@ -88,7 +88,7 @@ export class ChatComponent implements AfterViewInit {
     var id = localStorage.getItem("chatId") || ""
 
     // Adicionar o diálogo do usuário imediatamente para mostrar na tela
-    const userDialog = new DialogPublic2("", "", rawMessage, 0, 0, "", 0);
+    const userDialog = new DialogPublic2("loading", "", rawMessage, 0, 0, "", 0);
     this.dialogs.push(userDialog);
 
     // Força a detecção de mudanças para atualizar a view

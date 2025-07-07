@@ -14,6 +14,7 @@ export class TipsModalComponent {
   modalOpen = false
   selectedSuggestion: number = -1
   suggestions: string[] = []
+  loading = false;
 
   constructor(
     private chatService: ChatService,
@@ -22,17 +23,21 @@ export class TipsModalComponent {
 
   openModal() {
     this.modalOpen = true;
+    this.loading = true;
     var chatid = localStorage.getItem('chatId') || ""
     this.chatService.getSuggetionsByChatId(chatid)
     .subscribe({
         next: suggestions => {
           this.suggestions = suggestions
+          this.loading = false;
         },
     });
   }
 
   closeModal() {
     this.modalOpen = false;
+    this.suggestions = [];
+    this.selectedSuggestion = -1;
   }
 
   sendMessage() {

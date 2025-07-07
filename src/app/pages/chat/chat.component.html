@@ -40,7 +40,7 @@
               <div class="chat-bubble text-xs md:text-sm lg:text-base py-1.5 px-2 sm:py-2 sm:px-4 max-w-[90%] sm:max-w-[65%] break-words font-text">{{dialog.input}}</div>
         </div>
 
-        <div *ngIf="dialog.answer" class="chat chat-start">
+        <div *ngIf="dialog.answer && dialog.id !== 'loading'" class="chat chat-start">
           <div class="chat-image">
             <div class="btn btn-secondary btn-circle w-8 h-8 sm:w-11 sm:h-11 md:w-13 md:h-13 pointer-events-none">
               <svg *ngIf="dialog.emotion == 0" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8 fill-primary" viewBox="0 0 40 36" fill="none">
@@ -74,6 +74,24 @@
              <span *ngFor="let block of blocks">
               <p [innerHTML]="block" class="text-xs md:text-sm lg:text-base break-words"></p>
              </span>
+          </div>
+        </div>
+
+
+        <div *ngIf="!dialog.answer && dialog.id === 'loading'" class="chat chat-start">
+          <div class="chat-image">
+            <div class="btn btn-secondary btn-circle w-8 h-8 sm:w-11 sm:h-11 md:w-13 md:h-13 pointer-events-none">
+              <svg *ngIf="dialog.emotion == 0" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8 fill-primary" viewBox="0 0 40 36" fill="none">
+                <path d="M20 0C20.9644 0 21.8893 0.379285 22.5713 1.05442C23.2532 1.72955 23.6364 2.64522 23.6364 3.6C23.6364 4.932 22.9091 6.102 21.8182 6.714V9H23.6364C27.0118 9 30.2491 10.3275 32.6359 12.6905C35.0227 15.0534 36.3636 18.2583 36.3636 21.6H38.1818C38.664 21.6 39.1265 21.7896 39.4675 22.1272C39.8084 22.4648 40 22.9226 40 23.4V28.8C40 29.2774 39.8084 29.7352 39.4675 30.0728C39.1265 30.4104 38.664 30.6 38.1818 30.6H36.3636V32.4C36.3636 33.3548 35.9805 34.2705 35.2986 34.9456C34.6166 35.6207 33.6917 36 32.7273 36H7.27273C6.3083 36 5.38338 35.6207 4.70143 34.9456C4.01948 34.2705 3.63636 33.3548 3.63636 32.4V30.6H1.81818C1.33597 30.6 0.873508 30.4104 0.532533 30.0728C0.191558 29.7352 0 29.2774 0 28.8V23.4C0 22.9226 0.191558 22.4648 0.532533 22.1272C0.873508 21.7896 1.33597 21.6 1.81818 21.6H3.63636C3.63636 18.2583 4.97727 15.0534 7.3641 12.6905C9.75092 10.3275 12.9882 9 16.3636 9H18.1818V6.714C17.0909 6.102 16.3636 4.932 16.3636 3.6C16.3636 2.64522 16.7468 1.72955 17.4287 1.05442C18.1107 0.379285 19.0356 0 20 0ZM11.8182 19.8C10.6127 19.8 9.4565 20.2741 8.60406 21.118C7.75162 21.9619 7.27273 23.1065 7.27273 24.3C7.27273 25.4935 7.75162 26.6381 8.60406 27.482C9.4565 28.3259 10.6127 28.8 11.8182 28.8C13.0237 28.8 14.1799 28.3259 15.0323 27.482C15.8847 26.6381 16.3636 25.4935 16.3636 24.3C16.3636 23.1065 15.8847 21.9619 15.0323 21.118C14.1799 20.2741 13.0237 19.8 11.8182 19.8ZM28.1818 19.8C26.9763 19.8 25.8201 20.2741 24.9677 21.118C24.1153 21.9619 23.6364 23.1065 23.6364 24.3C23.6364 25.4935 24.1153 26.6381 24.9677 27.482C25.8201 28.3259 26.9763 28.8 28.1818 28.8C29.3873 28.8 30.5435 28.3259 31.3959 27.482C32.2484 26.6381 32.7273 25.4935 32.7273 24.3C32.7273 23.1065 32.2484 21.9619 31.3959 21.118C30.5435 20.2741 29.3873 19.8 28.1818 19.8Z" fill="#011826"/>
+              </svg>
+              
+            </div>
+          </div>
+          <div class="chat-header">
+            Blabinha
+          </div>
+          <div class="chat-bubble text-xs md:text-sm lg:text-base py-1.5 px-2 sm:py-2 sm:px-4 max-w-[90%] sm:max-w-[65%] break-words">
+             <span class="loading loading-dots loading-sm sm:loading-lg"></span>
           </div>
         </div>
       </div>
