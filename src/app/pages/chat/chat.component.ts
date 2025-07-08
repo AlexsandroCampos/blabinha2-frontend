@@ -25,6 +25,7 @@ export class ChatComponent implements AfterViewInit {
   username: string = ""
   blocks: string[] = [];
   messageToSend: string | null = null;
+  isSending = false;
 
   constructor(
     private router: Router,
@@ -69,9 +70,8 @@ export class ChatComponent implements AfterViewInit {
 
   sendMessage(str: string): void {
     var rawMessage = ''
+    var textarea = document.getElementById("textarea") as HTMLTextAreaElement
     if(str == '') {
-      var textarea = document.getElementById("textarea") as HTMLTextAreaElement
-
       if (!textarea) return
 
       rawMessage = textarea.value.trim();
@@ -84,6 +84,9 @@ export class ChatComponent implements AfterViewInit {
 
     else 
       rawMessage = str
+
+    // textarea.disabled = true;
+    this.isSending = true;
 
     var id = localStorage.getItem("chatId") || ""
 
@@ -102,6 +105,7 @@ export class ChatComponent implements AfterViewInit {
       .subscribe({
         next: dialog => {
           // Substitui o diálogo temporário pelo real retornado do servidor
+          this.isSending = false;
           this.dialogs[this.dialogs.length-1] = dialog
           this.username = dialog.chat.username
           this.navbarService.setStar(dialog.chat.stars)
@@ -155,6 +159,7 @@ export class ChatComponent implements AfterViewInit {
   handleEndOfGame(dialog:DialogPublicWithChat) {
     if(dialog.section == 142 || (dialog.section >= 290 && dialog.section < 300) || 
       (dialog.section >= 370 && dialog.section < 380)) {
+      this.isSending = true;
       setTimeout(() => {
         this.navbarService.setStep(2)
         localStorage.setItem('step', "2");

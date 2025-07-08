@@ -43,22 +43,33 @@ export class GameResultsComponent {
   }
 
   getDurationString(): string {
-    if(this.start == "" || this.end == "")
-      return "00:00"
+    if (this.start === "" || this.end === "") return "0s";
+
     const startTime = new Date(this.start);
     const endTime = new Date(this.end);
 
     const durationMs = endTime.getTime() - startTime.getTime();
     const totalSeconds = Math.floor(durationMs / 1000);
-    const minutes = Math.floor(totalSeconds / 60);
+
+    const days = Math.floor(totalSeconds / (24 * 60 * 60));
+    const hours = Math.floor((totalSeconds % (24 * 60 * 60)) / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
     const seconds = totalSeconds % 60;
 
-    const mm = String(minutes).padStart(2, '0');
-    const ss = String(seconds).padStart(2, '0');
+    const parts: string[] = [];
 
-    return `${mm}:${ss}`;
+    if (days > 0) parts.push(`${days}d`);
+    if (hours > 0) parts.push(`${hours}h`);
+
+    if (days === 0 && hours === 0) {
+      if (minutes > 0) parts.push(`${minutes}min`);
+      if (seconds > 0 || parts.length === 0) parts.push(`${seconds}s`);
+    }
+
+    return parts.join(" ");
   }
-  
+
+
 
   playAgain(){
     localStorage.setItem("step", '0')
