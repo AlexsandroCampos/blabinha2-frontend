@@ -28,7 +28,6 @@ export class GameResultsComponent {
       this.chat = chat
       this.start = chat.dialogs[0].created_at
       this.end = chat.dialogs[chat.dialogs.length - 1].created_at
-      console.log(chat)
       this.handleEndOfGame(chat)
     })
   }
@@ -87,4 +86,13 @@ export class GameResultsComponent {
     localStorage.clear();
     this.router.navigate([''])
   }
+
+  getDownloadableUrl(originalUrl: string): string {
+    if (!originalUrl) {
+      return '';
+    }
+    // Substitui 'inline' por 'attachment' para forçar o download
+    return originalUrl.replace('rscd=inline', 'rscd=attachment');
+  }
+
 }

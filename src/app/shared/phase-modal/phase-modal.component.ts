@@ -61,7 +61,6 @@ export class PhaseModalComponent {
       .subscribe({
         next: chat => {
           localStorage.setItem('chatId', chat.id.toString())
-          console.log(chat)
           localStorage.setItem('modalAnswered', 'true')
           localStorage.setItem('selectedAvatar', this.selectedAvatar.toString())
           localStorage.setItem('apiKey', this.apiKey)
@@ -110,7 +109,6 @@ export class PhaseModalComponent {
 
   handleError(error: any) {
     this.typeOfError = 2
-    console.log(error)
     this.showAlert("Ocorreu um erro. Tente novamente mais tarde")
   }
 }

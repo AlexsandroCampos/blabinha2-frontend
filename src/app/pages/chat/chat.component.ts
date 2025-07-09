@@ -55,7 +55,6 @@ export class ChatComponent implements AfterViewInit {
       this.navbarService.setStar(chat.stars)
       this.navbarService.setBonus(chat.bonusQnt)
       this.navbarService.setSection(chat.current_section)
-      console.log(this.dialogs)
     })
   }
 
@@ -115,7 +114,6 @@ export class ChatComponent implements AfterViewInit {
             this.scrollToBottom()
           }, 100);
           this.handleEndOfGame(dialog)
-          console.log(dialog)
         },
         error: error => {
           this.handleError(error);
@@ -142,7 +140,6 @@ export class ChatComponent implements AfterViewInit {
 
   handleError(error: any) {
     this.typeOfError = 2
-    console.log(error)
     this.showAlert("Ocorreu um erro. Tente novamente mais tarde")
   }
 

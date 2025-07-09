@@ -9,25 +9,12 @@
             <h1 *ngIf="typeOfEnding == 1" class="text-base sm:text-2xl md:text-4xl font-bold text-center">Parabéns!!! Você montou um herói!</h1>
             <h1 *ngIf="typeOfEnding == 0" class="text-base sm:text-2xl md:text-4xl font-bold text-center">Não foi dessa vez, mas o herói te aguarda!</h1>
             <div [ngClass]="typeOfEnding === 1 ? 'sm:mt-8' : 'sm:mt-13'" class="flex flex-col sm:flex-row items-center sm:items-start sm:justify-center my-5 md:w-3xl">
-                <div class="relative w-fit h-fit" *ngIf="chat && typeOfEnding == 1">
-                    <img 
-                        src="../../../assets/img/hero.jpeg"
+                <a *ngIf="chat && typeOfEnding == 1" [href]="chat.image" target="_blank" rel="noopener noreferrer">
+                    <img  
+                        [src]="chat.image" 
                         alt=""
                         class="w-45 sm:w-auto sm:h-60 md:w-auto md:h-70 rounded-3xl object-cover shadow-md sm:mr-10">
-
-                    <a href="../../../assets/img/hero.jpeg"
-                        download="resultado-heroi.png"
-                        class="absolute bottom-2 left-2 sm:bottom-4 sm:left-4 bg-black/60 p-2 rounded-full text-white hover:bg-black/80 transition btn btn-circle outline-0 border-0 shadow-none">
-                        
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                            class="w-4 h-4  md:w-5 md:h-5"
-                            
-                            viewBox="0 0 24 24"
-                            fill="currentColor">
-                        <path d="M19.92 12.08L12 20l-7.92-7.92l1.42-1.41l5.5 5.5V2h2v14.17l5.5-5.51zM12 20H2v2h20v-2z"/>
-                        </svg>
-                    </a>
-                </div>
+                </a>     
 
                
                <svg *ngIf="typeOfEnding == 0" xmlns="http://www.w3.org/2000/svg" class="w-30 h-30 sm:w-40 sm:h-40 md:w-50 md:h-50 fill-primary sm:mr-13" viewBox="0 0 24 24">

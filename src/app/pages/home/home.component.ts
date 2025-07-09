@@ -35,7 +35,6 @@ export class HomeComponent implements AfterViewInit {
         selectedEngineering: string;
       };
     };
-    console.log(state)
     if(state?.myData) {
       const model = state.myData.model;
       const selectedEngineering = state.myData.selectedEngineering;
@@ -44,7 +43,6 @@ export class HomeComponent implements AfterViewInit {
       .subscribe({
         next: chat => {
           localStorage.setItem('chatId', chat.id.toString())
-          console.log(chat)
         },
         error: error => this.handleError(error)
       });
@@ -91,7 +89,6 @@ export class HomeComponent implements AfterViewInit {
 
   handleError(error: any) {
     this.typeOfError = 2
-    console.log(error)
     this.showAlert("Ocorreu um erro. Tente novamente mais tarde")
   }
 }
