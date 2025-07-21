@@ -56,7 +56,7 @@ export class HomeComponent implements AfterViewInit {
 
   sendMessage(str: string): void {
     var rawMessage = ''
-    if(str == '') {
+    if(str.trim() === '') {
       var textarea = document.getElementById("textarea") as HTMLTextAreaElement
 
       if (!textarea) return
