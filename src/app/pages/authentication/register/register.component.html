@@ -1,0 +1,56 @@
+<div class="relative w-full h-screen overflow-hidden">
+  <!-- Fundo com imagem repetida rotacionada -->
+  <div class="absolute -inset-[50%] rotate-[-45deg] scale-150 bg-[url('assets/img/robots.png')] bg-repeat bg-[length:auto_auto] opacity-10">
+  </div>
+
+  <!-- Conteúdo sobre o fundo -->
+  <div class="relative z-10 flex justify-center items-center h-full">
+    <div class="bg-base-100 flex flex-col p-5 sm:p-10 rounded-4xl shadow-2xl min-h-110 w-full max-w-md">
+      <h2 class="text-3xl font-bold text-center mb-6">Criar Conta</h2>
+
+        <form class="flex flex-col gap-4" (ngSubmit)="submitRegister()">
+            <label class="form-control w-full">
+                <div class="label">
+                <span class="label-text">Email</span>
+                </div>
+                <input [(ngModel)]="email" name="email" type="email" placeholder="seu@email.com"
+                class="input input-bordered w-full" />
+            </label>
+
+            <label class="form-control w-full">
+                <div class="label">
+                <span class="label-text">Senha</span>
+                </div>
+                <input [(ngModel)]="password" name="password" type="password" placeholder="Crie uma senha segura"
+                class="input input-bordered w-full" />
+            </label>
+
+            <button type="submit" class="btn btn-primary w-full mt-4">Cadastrar</button>
+        </form>
+
+
+      <div class="text-center mt-6">
+        <span class="text-sm">Já tem uma conta? </span>
+        <a routerLink="/login" class="text-primary hover:underline font-medium cursor-pointer">Entrar</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Alerta com transição -->
+<div *ngFor="let alert of alerts; let i = index"
+  role="alert"
+  class="alert transition-opacity duration-500 ease-in-out animate-fade-in
+    absolute top-2 right-2 z-10 w-xs"
+  [class.alert-warning]="typeOfError == 1"
+  [class.alert-error]="typeOfError == 2"
+  [style.top.px]="20 + (i * 60)" >
+  <svg *ngIf="typeOfError === 1" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+      d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+  </svg>
+  <svg *ngIf="typeOfError === 2" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+  </svg>
+  <span>{{ alert }}</span>
+</div>

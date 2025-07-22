@@ -6,23 +6,44 @@ export const stepGuard: CanActivateFn = (
   state: RouterStateSnapshot
 ) => {
   const router = inject(Router);
+
+  const token = localStorage.getItem('token');
   const expectedStep = Number(route.data['step']);
   const currentStep = Number(localStorage.getItem('step')) || 0;
+  const path = route.routeConfig?.path || '';
 
-  const id = route.params['id'] || localStorage.getItem('chatId');
+  if (!token) {
+    if (path === 'login' || path === 'register') {
+      return true;
+    }
+    return router.parseUrl('/login');
+  }
 
-  if (currentStep === expectedStep) {
+  if (path === 'login' || path === 'register') {
+    switch (currentStep) {
+      case 0:
+        return router.parseUrl('/home');
+      case 1:
+        return router.parseUrl(`/chat/${localStorage.getItem('chatId') || ''}`);
+      case 2:
+        return router.parseUrl(`/chat/${localStorage.getItem('chatId') || ''}/results`);
+      default:
+        return router.parseUrl('/home');
+    }
+  }
+
+  if (expectedStep === currentStep) {
     return true;
   }
 
   switch (currentStep) {
     case 0:
-      return router.parseUrl('/');
+      return router.parseUrl('/home');
     case 1:
-      return router.parseUrl(`/chat/${id || ''}`); 
+      return router.parseUrl(`/chat/${localStorage.getItem('chatId') || ''}`);
     case 2:
-      return router.parseUrl(`/chat/${id || ''}/results`);
+      return router.parseUrl(`/chat/${localStorage.getItem('chatId') || ''}/results`);
     default:
-      return router.parseUrl('/');
+      return router.parseUrl('/home');
   }
-}
+};
