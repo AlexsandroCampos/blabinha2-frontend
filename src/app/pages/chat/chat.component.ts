@@ -4,7 +4,7 @@ import { ChatService } from '../../core/services/chat.service';
 import { DialogCreate, DialogPublic, DialogPublic2, DialogPublicWithChat } from '../../core/models/dialog.model';
 import { CommonModule } from '@angular/common';
 import { DialogService } from '../../core/services/dialog.service';
-import { first } from 'rxjs';
+import { first, take } from 'rxjs';
 import { PhaseModalComponent } from '../../shared/phase-modal/phase-modal.component';
 import { NavbarService } from '../../core/services/navbar.service';
 
@@ -37,15 +37,15 @@ export class ChatComponent implements AfterViewInit {
   ) {}
 
   ngOnInit(): void {
-    this.navbarService.currentMessage.subscribe(message => {
+    this.navbarService.currentMessage.pipe(take(1)).subscribe(message => {
       if (message) {
-       this.messageToSend = message;
+        this.messageToSend = message;
         this.navbarService.clearMessage();
       }
     });
 
     this.navbarService.triggerChatFunction$.subscribe((suggestion: string) => {
-      this.sendMessage(suggestion);
+      this.fillTextarea(suggestion);
     });
     const chatId = this.route.snapshot.paramMap.get('id') || ""
     this.selectedAvatar = Number(localStorage.getItem('selectedAvatar'))
@@ -59,11 +59,20 @@ export class ChatComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    console.log("AfterViewInit called", this.messageToSend);
     if (this.messageToSend) {
       setTimeout(() => {
         this.sendMessage(this.messageToSend!);
         this.messageToSend = null;
       }, 500);
+    }
+  }
+
+  fillTextarea(suggestion: string): void {
+    const textarea = document.getElementById("textarea") as HTMLTextAreaElement;
+    if (textarea) {
+      textarea.value = suggestion;
+      textarea.focus();
     }
   }
 
@@ -157,6 +166,7 @@ export class ChatComponent implements AfterViewInit {
     if(dialog.section == 142 || (dialog.section >= 290 && dialog.section < 300) || 
       (dialog.section >= 370 && dialog.section < 380)) {
       this.isSending = true;
+      this.navbarService.setSection(350);
       setTimeout(() => {
         this.navbarService.setStep(2)
         localStorage.setItem('step', "2");

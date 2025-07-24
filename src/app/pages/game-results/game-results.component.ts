@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ChatService } from '../../core/services/chat.service';
 import {ChatPublicWithDialogs } from '../../core/models/chat.model';
 import { CommonModule } from '@angular/common';
+import { NavbarService } from '../../core/services/navbar.service';
 
 @Component({
   selector: 'app-game-results',
@@ -19,7 +20,8 @@ export class GameResultsComponent {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private chatService: ChatService
+    private chatService: ChatService,
+    private navbarService: NavbarService
   ) {}
 
   ngOnInit(): void {
@@ -71,19 +73,20 @@ export class GameResultsComponent {
 
 
   playAgain(){
-    localStorage.setItem("step", '0')
-    this.router.navigate([''], {
-      state: {
-        myData: {
-          model: this.chat?.model,
-          selectedEngineering: this.chat?.strategy
-        }
-      }
-    });
+    localStorage.removeItem("selectedAvatar");
+    localStorage.removeItem("step");
+    localStorage.removeItem("apiKey");
+    localStorage.removeItem("modalAnswered");
+    localStorage.removeItem("chatId")
+    this.navbarService.setStep(0);
+    this.navbarService.setSection(100);
+    this.router.navigate(['']);
   }
 
   endGame(){
     localStorage.clear();
+    this.navbarService.setStep(0);
+    this.navbarService.setSection(100);
     this.router.navigate([''])
   }
 

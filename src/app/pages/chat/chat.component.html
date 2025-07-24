@@ -99,11 +99,11 @@
   </div>
 
   <!-- Área de input fixa embaixo -->
-  <div class="w-full max-w-sm sm:max-w-lg md:max-w-2xl responsive absolute bottom-0 px-2 responsive2 sm:px-0 md:px-0 h-30 md:h-42 bg-base-100 rounded-t-4xl">
+  <div class="w-full max-w-sm sm:max-w-lg md:max-w-2xl responsive absolute bottom-0  px-2 responsive2 sm:px-0 md:px-0 h-28 md:h-32 bg-base-100 rounded-t-4xl">
     <fieldset class="bg-secondary rounded-4xl p-4 flex flex-col gap-2">
       <textarea [disabled]="isSending" [value]="null" id="textarea"
         class="text-base-100 w-full bg-secondary resize-none border-0 focus:outline-none p-2 rounded-xl
-        sm:text-sm text-xs placeholder-base-100/65  max-h-20 overflow-y-auto md:h-20"
+        sm:text-sm text-xs placeholder-base-100/65  max-h-20 overflow-y-auto md:h-10"
         (keydown.enter)="sendMessage(''); $event.preventDefault()"
         placeholder="Digite alguma coisa...">
       </textarea>

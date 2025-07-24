@@ -28,25 +28,25 @@ export class HomeComponent implements AfterViewInit {
   ) {}
 
   ngOnInit(): void {
-    const navigation = this.router.getCurrentNavigation();
-    const state = history.state as {
-      myData?: {
-        model: string;
-        selectedEngineering: string;
-      };
-    };
-    if(state?.myData) {
-      const model = state.myData.model;
-      const selectedEngineering = state.myData.selectedEngineering;
-      this.chatService.postChat(new ChatCreate(model, selectedEngineering, 100))
-      .pipe(first())
-      .subscribe({
-        next: chat => {
-          localStorage.setItem('chatId', chat.id.toString())
-        },
-        error: error => this.handleError(error)
-      });
-    }
+    // const navigation = this.router.getCurrentNavigation();
+    // const state = history.state as {
+    //   myData?: {
+    //     model: string;
+    //     selectedEngineering: string;
+    //   };
+    // };
+    // if(state?.myData) {
+    //   const model = state.myData.model;
+    //   const selectedEngineering = state.myData.selectedEngineering;
+    //   this.chatService.postChat(new ChatCreate(model, selectedEngineering, 100))
+    //   .pipe(first())
+    //   .subscribe({
+    //     next: chat => {
+    //       localStorage.setItem('chatId', chat.id.toString())
+    //     },
+    //     error: error => this.handleError(error)
+    //   });
+    // }
   }
 
   ngAfterViewInit(): void {

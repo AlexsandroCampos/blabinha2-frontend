@@ -49,9 +49,9 @@
         >
             <svg xmlns="http://www.w3.org/2000/svg"  class="transition-all duration-300" width="26" height="23" viewBox="0 0 26 23" fill="currentColor"
                 [ngClass]="{
-                'fill-base-100': (section < 200),
+                'fill-base-100/80': (section < 200),
                 'scale-120 fill-base-100': section >= 200 && section < 300,
-                'fill-base-100/30': section >= 300
+                'fill-base-100/30': section >= 300,
                 }"
             >
                 <path d="M0 23L0 2.3C0 1.6675 0.2548 1.12623 0.7644 0.6762C1.274 0.226167 1.88587 0.000766667 2.6 0L23.4 0C24.115 0 24.7273 0.2254 25.2369 0.6762C25.7465 1.127 26.0009 1.66827 26 2.3V16.1C26 16.7325 25.7456 17.2742 25.2369 17.725C24.7282 18.1758 24.1159 18.4008 23.4 18.4H5.2L0 23ZM5.2 13.8L15.6 13.8V11.5L5.2 11.5V13.8ZM5.2 10.35L20.8 10.35V8.05L5.2 8.05V10.35ZM5.2 6.9L20.8 6.9V4.6L5.2 4.6V6.9Z"/>
@@ -69,7 +69,7 @@
         >
             <svg xmlns="http://www.w3.org/2000/svg"  class="transition-all duration-300" width="26" height="23" viewBox="0 0 26 23" fill="currentColor"
                 [ngClass]="{
-                    'fill-base-100': (section < 300),
+                    'fill-base-100/80': (section < 300),
                     'scale-135 fill-base-100': section >= 300 && section < 400,
                     'fill-base-100/30': section >= 400,
                 }"
@@ -81,7 +81,7 @@
       
   
       <!-- Itens que aparecem só quando expandido -->
-      <ul class="space-y-3 w-full mt-10 hidden" id="ul">
+      <ul class="space-y-3 w-full mt-10 hidden h-full" id="ul">
         <li class="transition-opacity duration-300 opacity-0 whitespace-nowrap bg-custom-gradient-li rounded-xl"
         [ngClass]="{
             'outline-3': (section >= 100 && section < 200 && step === 1),
@@ -109,6 +109,7 @@
             <div class="p-3.5 flex items-center justify-center"
                 [ngClass]="{
                     'opacity-30': (section >= 300),
+                    'opacity-80': (section >= 100 && section < 200 && step === 1)
              }">
                 <svg xmlns="http://www.w3.org/2000/svg" class="mr-1.5" width="26" height="23" viewBox="0 0 26 23" fill="none">
                     <path d="M0 23L0 2.3C0 1.6675 0.2548 1.12623 0.7644 0.6762C1.274 0.226167 1.88587 0.000766667 2.6 0L23.4 0C24.115 0 24.7273 0.2254 25.2369 0.6762C25.7465 1.127 26.0009 1.66827 26 2.3V16.1C26 16.7325 25.7456 17.2742 25.2369 17.725C24.7282 18.1758 24.1159 18.4008 23.4 18.4H5.2L0 23ZM5.2 13.8L15.6 13.8V11.5L5.2 11.5V13.8ZM5.2 10.35L20.8 10.35V8.05L5.2 8.05V10.35ZM5.2 6.9L20.8 6.9V4.6L5.2 4.6V6.9Z" fill="#E4EDF2"/>
@@ -128,6 +129,7 @@
             <div class="p-3.5 flex items-center justify-center"
                 [ngClass]="{
                     'opacity-30': (section >= 400),
+                    'opacity-80': (section < 300 && step === 1)
              }">
                 <svg xmlns="http://www.w3.org/2000/svg" class="mr-1.5" width="26" height="23" viewBox="0 0 26 23" fill="none">
                     <path d="M7.8 18.4L13 14.8925L18.2 18.4L16.25 12.7075L21.45 9.43H15.08L13 3.45L10.92 9.43H4.55L9.75 12.7075L7.8 18.4ZM13 23C11.2017 23 9.51166 22.6979 7.93 22.0938C6.34833 21.4897 4.9725 20.6705 3.8025 19.6362C2.6325 18.602 1.70647 17.3849 1.0244 15.985C0.342335 14.5851 0.000868312 13.0901 1.64557e-06 11.5C-0.00086502 9.90993 0.340602 8.41493 1.0244 7.015C1.7082 5.61507 2.63423 4.39798 3.8025 3.36375C4.97077 2.32952 6.3466 1.51033 7.93 0.9062C9.5134 0.302067 11.2034 0 13 0C14.7966 0 16.4866 0.302067 18.07 0.9062C19.6534 1.51033 21.0292 2.32952 22.1975 3.36375C23.3658 4.39798 24.2922 5.61507 24.9769 7.015C25.6616 8.41493 26.0026 9.90993 26 11.5C25.9974 13.0901 25.6559 14.5851 24.9756 15.985C24.2953 17.3849 23.3692 18.602 22.1975 19.6362C21.0258 20.6705 19.6499 21.49 18.07 22.0949C16.4901 22.6998 14.8001 23.0015 13 23Z" fill="#E4EDF2"/>
@@ -135,6 +137,18 @@
                 <h4 class="text-base-100">Resultados</h4>
             </div>
         </li>
+
+        <li class="mt-auto cursor-pointer transition-opacity duration-300 opacity-0 whitespace-nowrap bg-custom-gradient-li rounded-xl">
+            <button
+                (click)="logout()" class="cursor-pointer transition-all duration-200 ease-in-out whitespace-nowrap bg-custom-gradient-li rounded-xl p-2.5 flex items-center justify-center w-full active:scale-95 hover:brightness-130 shadow-md hover:shadow-lg"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" class="mr-1.5 fill-base-100" width="35" height="35" viewBox="0 0 24 24" fill="none">
+                <path d="M14.08 15.59L16.67 13H7v-2h9.67l-2.59-2.59L15.5 7l5 5l-5 5zM19 3a2 2 0 0 1 2 2v4.67l-2-2V5H5v14h14v-2.67l2-2V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5c0-1.11.89-2 2-2z"/>
+                </svg>
+                <h4 class="text-base-100">Sair</h4>
+            </button>
+        </li>
+
       </ul>
     </div>
 </div>

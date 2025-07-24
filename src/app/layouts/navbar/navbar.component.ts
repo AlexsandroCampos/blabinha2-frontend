@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { TipsModalComponent } from "../../shared/tips-modal/tips-modal.component";
 import { CommonModule } from '@angular/common';
 import { NavbarService } from '../../core/services/navbar.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -15,8 +16,9 @@ export class NavbarComponent {
   selectedAvatar: number = 0
   stars: number = 0
   bonus:number = 0
+  section: number = 0
 
-  constructor(private navbarService: NavbarService) {}
+  constructor(private navbarService: NavbarService, private router: Router) {}
 
   ngOnInit() {
     this.navbarService.currentAvatar.subscribe(avatar => {
@@ -31,10 +33,22 @@ export class NavbarComponent {
     this.navbarService.currentbonus.subscribe(bonus => {
       this.bonus = bonus;
     });
+    this.navbarService.currentSection.subscribe(section => {
+      this.section = section;
+    });
   }
 
   openModal() {
     this.modalComponent.openModal();
+  }
+
+  logout() {
+    localStorage.clear();
+    this.navbarService.setAvatar(0);
+    this.navbarService.setStep(0);
+    this.navbarService.setBonus(0);
+    this.navbarService.setSection(100);
+    this.router.navigate(['/login']);
   }
 
 }
