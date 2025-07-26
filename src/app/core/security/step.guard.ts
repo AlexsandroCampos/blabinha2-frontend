@@ -7,7 +7,7 @@ export const stepGuard: CanActivateFn = (
 ) => {
   const router = inject(Router);
 
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem('access_token');
   const expectedStep = Number(route.data['step']);
   const currentStep = Number(localStorage.getItem('step')) || 0;
   const path = route.routeConfig?.path || '';

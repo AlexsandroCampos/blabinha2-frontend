@@ -19,7 +19,6 @@ export class PhaseModalComponent {
   selectedAvatar: number = 0
   selectedModel: string = "none"
   selectedEngineering: string = "none"
-  apiKey: string = ""
   alerts: string[] = []
   typeOfError: number = 0
 
@@ -63,7 +62,6 @@ export class PhaseModalComponent {
           localStorage.setItem('chatId', chat.id.toString())
           localStorage.setItem('modalAnswered', 'true')
           localStorage.setItem('selectedAvatar', this.selectedAvatar.toString())
-          localStorage.setItem('apiKey', this.apiKey)
           localStorage.setItem('step', "0")
           this.navbarService.setAvatar(this.selectedAvatar)
           this.closeModal()
@@ -82,12 +80,6 @@ export class PhaseModalComponent {
 
     if (this.selectedModel == 'none') {
       this.showAlert('Selecione um modelo de linguagem')
-      error = true
-      this.typeOfError = 1
-    }
-
-    if (this.apiKey == '') {
-      this.showAlert('Digite uma chave de API')
       error = true
       this.typeOfError = 1
     }

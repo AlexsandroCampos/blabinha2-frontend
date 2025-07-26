@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { UserService } from '../../../core/services/user.service';
+import { UserCreatePayload } from '../../../core/models/user.model';
 
 @Component({
   selector: 'app-register',
@@ -12,24 +14,39 @@ import { Router, RouterLink } from '@angular/router';
 export class RegisterComponent {
   email: string = '';
   password: string = '';
+  confirmPassword: string = '';
   alerts: string[] = [];
   typeOfError: Number = 0;
 
   constructor(
     private router: Router,
+    private userService: UserService,
   ) {}
 
   submitRegister() {
-    if (!this.email || !this.password) {
+    if (!this.email || !this.password || !this.confirmPassword) {
       this.typeOfError = 1;
       this.showAlert("Preencha todos os campos.");
       return;
     }
 
-    console.log('Registrando com:', this.email, this.password);
-    // Aqui você pode chamar um AuthService para cadastro
+    if (this.password !== this.confirmPassword) {
+      this.typeOfError = 1;
+      this.showAlert("As senhas não coincidem.");
+      return;
+    }
 
-    this.router.navigate(['/login']);
+    this.userService.postUser(new UserCreatePayload(
+      this.email, this.password, this.password
+    )).subscribe({
+      next: (response) => {
+        this.router.navigate(['/login']);
+      },
+      error: (error) => {
+        this.typeOfError = 2;
+        this.showAlert("Erro ao registrar usuário. Tente novamente.");
+      }
+    })
   }
 
   showAlert(message: string) {

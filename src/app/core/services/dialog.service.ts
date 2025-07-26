@@ -8,19 +8,18 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class DialogService extends BaseService {
+export class DialogService {
 
   private baseUrl = `${environment.apiUrl}/dialogs`;
 
   constructor(private httpClient: HttpClient) {
-    super()
   }
 
   postDialog(dialogCreate: DialogCreate): Observable<DialogPublicWithChat> {
-    return this.httpClient.post<DialogPublicWithChat>(`${this.baseUrl}`, dialogCreate, this.getHttpOptions());
+    return this.httpClient.post<DialogPublicWithChat>(`${this.baseUrl}`, dialogCreate);
   }
 
   getDialog(dialogId: number): Observable<DialogPublicWithChat> {
-    return this.httpClient.get<DialogPublicWithChat>(`${this.baseUrl}/${dialogId}`, this.getHttpOptions());
+    return this.httpClient.get<DialogPublicWithChat>(`${this.baseUrl}/${dialogId}`);
   }
 }

@@ -8,7 +8,6 @@ export class BaseService {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'Accept-Language': 'en-US',
-        'Authorization': `Bearer ${token}`
       })
     };
   }

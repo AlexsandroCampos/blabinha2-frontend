@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../../core/services/auth.service';
+import { LoginPayload } from '../../../core/models/token.model';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +19,7 @@ export class LoginComponent {
 
   constructor(
     private router: Router,
+    private authService: AuthService,
   ) {}
 
 
@@ -27,11 +30,22 @@ export class LoginComponent {
       return;
     }
 
-    // Aqui você pode chamar um AuthService por exemplo
-    console.log('Login com:', this.email, this.password);
-    localStorage.setItem('token', 'fake-jwt-token');
-    this.router.navigate(['/home']);
-
+    this.authService.postToken(new LoginPayload(this.email, this.password)).subscribe({
+      next: (token) => {
+        localStorage.setItem('access_token', token.access_token);
+        localStorage.setItem('refresh_token', token.refresh_token);
+        this.router.navigate(['/home']);
+      },
+      error: (error) => {
+        if (error.status === 401) {
+          this.typeOfError = 1;
+          this.showAlert("Credenciais inválidas.");
+        } else {
+          this.typeOfError = 2;
+          this.showAlert("Erro ao fazer login.");
+        }
+      }
+    });
   }
 
   showAlert(message: string) {
