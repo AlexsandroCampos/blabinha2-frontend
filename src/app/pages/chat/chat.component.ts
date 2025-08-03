@@ -59,7 +59,6 @@ export class ChatComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    console.log("AfterViewInit called", this.messageToSend);
     if (this.messageToSend) {
       setTimeout(() => {
         this.sendMessage(this.messageToSend!);
@@ -121,11 +120,14 @@ export class ChatComponent implements AfterViewInit {
           this.navbarService.setSection(dialog.section)
           setTimeout(() => {
             this.scrollToBottom()
+            if(textarea) textarea.focus();
           }, 100);
           this.handleEndOfGame(dialog)
         },
         error: error => {
           this.handleError(error);
+          this.isSending = false;
+          this.dialogs[this.dialogs.length-1] = new DialogPublic2("error", "Tente mais tarde.", rawMessage, 0, 0, "", 2);
         }
     });
 

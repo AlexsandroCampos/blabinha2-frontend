@@ -28,7 +28,7 @@ export class TipsModalComponent {
     this.chatService.getSuggetionsByChatId(chatid)
     .subscribe({
         next: suggestions => {
-          this.suggestions = suggestions
+          this.suggestions = suggestions.filter(s => s.trim() !== '');
           this.loading = false;
         },
     });

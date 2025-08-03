@@ -48,6 +48,7 @@ export class AuthService{
     this.navbarService.setStep(0);
     this.navbarService.setBonus(0);
     this.navbarService.setSection(100);
+    this.navbarService.setTitleVisibility(false);
     this.router.navigate(['/login']);
   }
 

@@ -29,6 +29,13 @@ export class NavbarService {
   private messageSource = new BehaviorSubject<string | null>(null);
   currentMessage = this.messageSource.asObservable();
 
+  private titleSource = new BehaviorSubject<boolean>(false);
+  currentTitle = this.titleSource.asObservable();
+
+  setTitleVisibility(isHidden: boolean) {
+    this.titleSource.next(isHidden);
+  }
+
   setMessage(message: string) {
     this.messageSource.next(message);
   }

@@ -17,6 +17,7 @@ export class NavbarComponent {
   stars: number = 0
   bonus:number = 0
   section: number = 0
+  isTitleHidden: boolean = false;
 
   constructor(private navbarService: NavbarService, private router: Router) {}
 
@@ -36,6 +37,9 @@ export class NavbarComponent {
     this.navbarService.currentSection.subscribe(section => {
       this.section = section;
     });
+    this.navbarService.currentTitle.subscribe(title => {
+      this.isTitleHidden = title;
+    });
   }
 
   openModal() {
@@ -48,6 +52,7 @@ export class NavbarComponent {
     this.navbarService.setStep(0);
     this.navbarService.setBonus(0);
     this.navbarService.setSection(100);
+    this.navbarService.setTitleVisibility(false);
     this.router.navigate(['/login']);
   }
 

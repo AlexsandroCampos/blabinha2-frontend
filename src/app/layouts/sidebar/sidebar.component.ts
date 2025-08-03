@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class SidebarComponent {
   section: number = 0
   step = 0
+  isTitleHidden: boolean = false;
   
   constructor(
     private navbarService: NavbarService,
@@ -26,6 +27,10 @@ export class SidebarComponent {
     this.navbarService.currentstep.subscribe(step => {
       this.step = step;
     });
+
+    this.navbarService.currentTitle.subscribe(title => {
+      this.isTitleHidden = title;
+    });
   }
 
   logout() {
@@ -34,6 +39,11 @@ export class SidebarComponent {
     this.navbarService.setStep(0);
     this.navbarService.setBonus(0);
     this.navbarService.setSection(100);
+    this.navbarService.setTitleVisibility(false);
     this.router.navigate(['/login']);
+  }
+
+  hideTitle() {
+    this.navbarService.setTitleVisibility(!this.isTitleHidden);
   }
 }
