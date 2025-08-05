@@ -2,7 +2,27 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.6.
 
-## Development server
+##  How to run the project
+
+### 1. Install Node.js
+This project requires **Node.js 20.11.1**.  
+Download and install the correct version from the official website:  
+[Download Node.js 20.11.1 (LTS)](https://nodejs.org/dist/v20.11.1/)
+
+> Installing Node.js will also install **npm** (Node Package Manager), which will be used to install the project dependencies.
+
+### 2. Install Angular CLI
+After installing Node.js, open your terminal and run:
+```bash
+npm install -g @angular/cli@19.2.6
+```
+
+### 3. Install the dependencies
+```bash
+npm install
+```
+
+### 4. Development server
 
 To start a local development server, run:
 
