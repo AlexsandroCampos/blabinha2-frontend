@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class DialogService {
 
-  private baseUrl = `${environment.apiUrl}/dialogs`;
+  private baseUrl = `${environment.apiUrl}/dialogs/`;
 
   constructor(private httpClient: HttpClient) {
   }

@@ -10,7 +10,7 @@ import { DialogPublic } from '../models/dialog.model';
   providedIn: 'root'
 })
 export class ChatService {
- private baseUrl = `${environment.apiUrl}/chats`;
+ private baseUrl = `${environment.apiUrl}/chats/`;
 
   constructor(private httpClient: HttpClient) {
   }
