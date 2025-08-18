@@ -30,6 +30,12 @@ export class RegisterComponent {
       return;
     }
 
+    if (!this.isValidEmail(this.email)) {
+      this.typeOfError = 1;
+      this.showAlert("Digite um e-mail válido.");
+      return;
+    }
+
     if (this.password !== this.confirmPassword) {
       this.typeOfError = 1;
       this.showAlert("As senhas não coincidem.");
@@ -52,6 +58,11 @@ export class RegisterComponent {
   showAlert(message: string) {
     this.alerts.push(message);
     setTimeout(() => this.alerts = [], 3000);
+  }
+
+  private isValidEmail(email: string): boolean {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
   }
 
 }
